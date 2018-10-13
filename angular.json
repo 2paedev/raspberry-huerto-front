@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/bootstrap/scss/bootstrap.scss",
+              "src/assets/sass/main.scss"
             ],
             "scripts": []
           },

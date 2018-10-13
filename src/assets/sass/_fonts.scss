@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-display: block;
+  src: local('Open Sans'), local('OpenSans-Regular'),
+    url('/assets/fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+$font: 'Open Sans';
+$fontSemiBold: 'Open Sans SemiBold';
+$font-bold: 'Open Sans Bold';

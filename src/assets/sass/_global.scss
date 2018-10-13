@@ -1,0 +1,13 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100%;
+  font-family: $font;
+  margin-bottom: 80px;
+  min-width: 1000px;
+}
