@@ -40,11 +40,9 @@
 /** IE10 and IE11 requires the following for the Reflect API. */
 // import 'core-js/es6/reflect';
 
-
 /** Evergreen browsers require these. **/
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
 import 'core-js/es7/reflect';
-
 
 /**
  * Web Animations `@angular/platform-browser/animations`
@@ -58,8 +56,10 @@ import 'core-js/es7/reflect';
  * user can disable parts of macroTask/DomEvents patch by setting following flags
  */
 
+ // tslint:disable-next-line:max-line-length
  // (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
  // (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
+ // tslint:disable-next-line:max-line-length
  // (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 
  /*
@@ -72,8 +72,6 @@ import 'core-js/es7/reflect';
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
-
-
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
