@@ -1,4 +1,9 @@
 @import '~src/assets/sass/main';
 
 :host {
+  @include media-breakpoint-down(md) {
+    .card-info-wrapper {
+      margin-top: 15px;
+    }
+  }
 }

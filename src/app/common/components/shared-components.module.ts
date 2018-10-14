@@ -4,14 +4,19 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
 import { IrrigationSettingsComponent } from './irrigation-settings/irrigation-settings.component';
 import { CameraZoneComponent } from './camera-zone/camera-zone.component';
 import { CommonModule } from '@angular/common';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { VendorComponentsModule } from './vendor-components.module';
+import { PanelErrorComponent } from './panel-error/panel-error.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, VendorComponentsModule],
   declarations: [
     CardInfoComponent,
     WeatherForecastComponent,
     IrrigationSettingsComponent,
     CameraZoneComponent,
+    LoadingSpinnerComponent,
+    PanelErrorComponent,
   ],
   exports: [
     CommonModule,
@@ -19,6 +24,8 @@ import { CommonModule } from '@angular/common';
     WeatherForecastComponent,
     IrrigationSettingsComponent,
     CameraZoneComponent,
+    LoadingSpinnerComponent,
+    PanelErrorComponent,
   ],
 })
 export class SharedComponentsModule {}

@@ -1,19 +1,28 @@
+<app-loading-spinner [showSpinner]="showingSpinner"></app-loading-spinner>
+
 <section class="container">
   <div class="row">
-    <div class="col">
+    <div class="card-info-wrapper col-xs-12 col-md-4"
+         *ngIf="!errorInCardInfo">
       <app-card-info title="Humidity(Ground)"
                      symbol="{{symbols.HUMIDITY}}"
-                     numberInfo="38"></app-card-info>
+                     numberInfo="{{cardInfoValues.humidityGround}}"></app-card-info>
     </div>
-    <div class="col">
+    <div class="card-info-wrapper col-xs-12 col-md-4"
+         *ngIf="!errorInCardInfo">
       <app-card-info title="Temperature(Air)"
                      symbol="{{symbols.TEMPERATURE}}"
-                     numberInfo="21"></app-card-info>
+                     numberInfo="{{cardInfoValues.temperatureAir}}"></app-card-info>
     </div>
-    <div class="col">
+    <div class="card-info-wrapper col-xs-12 col-md-4"
+         *ngIf="!errorInCardInfo">
       <app-card-info title="Humidity(Air)"
                      symbol="{{symbols.HUMIDITY}}"
-                     numberInfo="12"></app-card-info>
+                     numberInfo="{{cardInfoValues.humidityAir}}"></app-card-info>
+    </div>
+    <div class="col"
+         *ngIf="errorInCardInfo">
+      <app-panel-error message="{{errorInCardInfoMessage}}"></app-panel-error>
     </div>
   </div>
   <hr>

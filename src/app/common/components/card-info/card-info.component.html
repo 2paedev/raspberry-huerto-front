@@ -1,6 +1,15 @@
 <div class="card-info-wrapper"
      [ngClass]="setColor()">
-  <span class="title">{{ title }}</span>
+  <div class="title-section">
+    <img *ngIf="isSymbolTemperature"
+         src="assets/icons/temperature.svg">
+    <img *ngIf="!isSymbolTemperature"
+         src="assets/icons/humidity.svg">
+    <!-- <span class="d-none d-md-block title"> -->
+    <span class="title">
+      {{ title }}
+    </span>
+  </div>
   <div class="info-section"
        [ngClass]="setColor()">
     <span class="number">{{ numberInfo }}</span><span class="symbol">{{ symbol }}</span>

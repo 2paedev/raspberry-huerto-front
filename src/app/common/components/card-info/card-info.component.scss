@@ -20,8 +20,15 @@
     &.warning-value {
       border-color: #e5ff51;
     }
+  }
 
+  .title-section {
+    img {
+      height: 40px;
+      width: 40px;
+    }
     .title {
+      margin-left: 2px;
       font-size: 12px;
       border-bottom: 1px solid #fffcd9;
     }

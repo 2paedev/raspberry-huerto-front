@@ -8,10 +8,14 @@ export class LimitsHumidity {
 }
 
 export class LimitsTemperature {
-  minHotTemperature: Number;
-  maxHotTemperature: Number;
+  minHotCriticalTemperature: Number;
+  maxHotCriticalTemperature: Number;
+  minHotWarningTemperature: Number;
+  maxHotWarningTemperature: Number;
   minNormalTemperature: Number;
   maxNormalTemperature: Number;
-  minColdTemperature: Number;
-  maxColdTemperature: Number;
+  minColdCriticalTemperature: Number;
+  maxColdCriticalTemperature: Number;
+  minColdWarningTemperature: Number;
+  maxColdWarningTemperature: Number;
 }

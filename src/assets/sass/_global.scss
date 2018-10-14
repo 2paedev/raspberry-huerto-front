@@ -6,6 +6,7 @@ html {
 
 body {
   min-height: 100%;
+  min-width: 300px;
   height: 100%;
   margin: 0 auto;
   font-family: $font;
@@ -20,7 +21,6 @@ body {
 }
 
 .row {
-  width: 100%;
   margin: 35px -15px;
 }
 

@@ -18,35 +18,38 @@ export class CardInfoComponent implements OnInit {
 
   maximumMinimumHumidityValues: LimitsHumidity;
   maximumMinimumTemperatureValues: LimitsTemperature;
+  isSymbolTemperature: boolean;
 
   constructor() {}
 
   ngOnInit() {
     this.maximumMinimumHumidityValues = getLimitsHumidityValues();
     this.maximumMinimumTemperatureValues = getLimitsTemperatureValues();
+    this.isSymbolTemperature = this.symbol === SYMBOLS.TEMPERATURE;
   }
 
   setColor() {
     const numberInfoParsed = parseFloat(this.numberInfo);
-    if (this.symbol === SYMBOLS.TEMPERATURE) {
-      return this.getColorClassTemperature(numberInfoParsed);
-    }
-    if (this.symbol === SYMBOLS.HUMIDITY) {
-      return this.getColorClassHumidity(numberInfoParsed);
-    }
+    return this.isSymbolTemperature
+      ? this.getColorClassTemperature(numberInfoParsed)
+      : this.getColorClassHumidity(numberInfoParsed);
   }
 
   getColorClassTemperature(numberInfo: Number) {
     return {
       'critical-value':
-        numberInfo > this.maximumMinimumTemperatureValues.minHotTemperature &&
-        numberInfo < this.maximumMinimumTemperatureValues.maxHotTemperature,
+        (numberInfo >= this.maximumMinimumTemperatureValues.minHotCriticalTemperature &&
+          numberInfo < this.maximumMinimumTemperatureValues.maxHotCriticalTemperature) ||
+        (numberInfo >= this.maximumMinimumTemperatureValues.minColdCriticalTemperature &&
+          numberInfo < this.maximumMinimumTemperatureValues.maxColdCriticalTemperature),
       'normal-value':
-        numberInfo > this.maximumMinimumTemperatureValues.minNormalTemperature &&
+        numberInfo >= this.maximumMinimumTemperatureValues.minNormalTemperature &&
         numberInfo < this.maximumMinimumTemperatureValues.maxNormalTemperature,
       'warning-value':
-        numberInfo > this.maximumMinimumTemperatureValues.minColdTemperature &&
-        numberInfo < this.maximumMinimumTemperatureValues.maxColdTemperature,
+        (numberInfo >= this.maximumMinimumTemperatureValues.minHotWarningTemperature &&
+          numberInfo < this.maximumMinimumTemperatureValues.maxHotWarningTemperature) ||
+        (numberInfo >= this.maximumMinimumTemperatureValues.minColdWarningTemperature &&
+          numberInfo < this.maximumMinimumTemperatureValues.maxColdWarningTemperature),
     };
   }
 
@@ -57,10 +60,10 @@ export class CardInfoComponent implements OnInit {
         numberInfo < this.maximumMinimumHumidityValues.maxCriticalHumidity,
       'normal-value':
         numberInfo > this.maximumMinimumHumidityValues.minNormalHumidity &&
-        numberInfo < this.maximumMinimumHumidityValues.maxNormalHumidity,
+        numberInfo <= this.maximumMinimumHumidityValues.maxNormalHumidity,
       'warning-value':
         numberInfo > this.maximumMinimumHumidityValues.minWarningHumidity &&
-        numberInfo < this.maximumMinimumHumidityValues.maxWarningHumidity,
+        numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity,
     };
   }
 }
