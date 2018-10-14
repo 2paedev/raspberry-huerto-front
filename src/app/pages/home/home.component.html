@@ -1,3 +1,37 @@
-dasdasdas
-
-{{test}}
+<section class="container">
+  <div class="row">
+    <div class="col">
+      <app-card-info title="Humidity(Ground)"
+                     symbol="{{symbols.HUMIDITY}}"
+                     numberInfo="38"></app-card-info>
+    </div>
+    <div class="col">
+      <app-card-info title="Temperature(Air)"
+                     symbol="{{symbols.TEMPERATURE}}"
+                     numberInfo="21"></app-card-info>
+    </div>
+    <div class="col">
+      <app-card-info title="Humidity(Air)"
+                     symbol="{{symbols.HUMIDITY}}"
+                     numberInfo="12"></app-card-info>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-weather-forecast></app-weather-forecast>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-irrigation-settings></app-irrigation-settings>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-camera-zone></app-camera-zone>
+    </div>
+  </div>
+</section>

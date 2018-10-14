@@ -1,0 +1,11 @@
+<div class="card-info-wrapper"
+     [ngClass]="setColor()">
+  <span class="title">{{ title }}</span>
+  <div class="info-section"
+       [ngClass]="setColor()">
+    <span class="number">{{ numberInfo }}</span><span class="symbol">{{ symbol }}</span>
+  </div>
+  <button class='btn btn-sm btn-outline-primary '>
+    <i class="fa fa-pencil"></i> Stats
+  </button>
+</div>

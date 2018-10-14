@@ -1,0 +1,49 @@
+@import '~src/assets/sass/main';
+
+:host {
+  .card-info-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 15px 0;
+
+    &.critical-value {
+      border-color: #ff4040;
+    }
+    &.normal-value {
+      border-color: #27ff7a;
+    }
+    &.warning-value {
+      border-color: #e5ff51;
+    }
+
+    .title {
+      font-size: 12px;
+      border-bottom: 1px solid #fffcd9;
+    }
+  }
+
+  .info-section {
+    color: #27ff7a;
+    &.critical-value {
+      color: #ff4040;
+    }
+    &.normal-value {
+      color: #27ff7a;
+    }
+    &.warning-value {
+      color: #e5ff51;
+    }
+    .number {
+      margin-left: 5px;
+      font-size: 62px;
+    }
+    .symbol {
+      font-size: 16px;
+    }
+  }
+}

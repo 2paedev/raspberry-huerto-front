@@ -1,0 +1,1 @@
+export const INTERVAL_TIME_REQUESTS = 10000;
