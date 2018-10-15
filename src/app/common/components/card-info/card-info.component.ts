@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { getLimitsHumidityValues, getLimitsTemperatureValues } from '../../helpers/config-values';
 import { LimitsHumidity, LimitsTemperature } from '../../models/limits-values-card-info';
 import { SYMBOLS } from '../../domain/constants';
@@ -6,15 +6,21 @@ import { SYMBOLS } from '../../domain/constants';
 @Component({
   selector: 'app-card-info',
   templateUrl: './card-info.component.html',
-  styleUrls: ['./card-info.component.scss'],
+  styleUrls: ['./card-info.component.scss']
 })
 export class CardInfoComponent implements OnInit {
   @Input()
+  identificator: Number;
+  @Input()
   title: string;
+  @Input()
+  iconTitle: string;
   @Input()
   symbol: string;
   @Input()
   numberInfo: string;
+  @Output()
+  callbackStats = new EventEmitter();
 
   maximumMinimumHumidityValues: LimitsHumidity;
   maximumMinimumTemperatureValues: LimitsTemperature;
@@ -26,6 +32,10 @@ export class CardInfoComponent implements OnInit {
     this.maximumMinimumHumidityValues = getLimitsHumidityValues();
     this.maximumMinimumTemperatureValues = getLimitsTemperatureValues();
     this.isSymbolTemperature = this.symbol === SYMBOLS.TEMPERATURE;
+  }
+
+  goToStats() {
+    this.callbackStats.emit(this.identificator);
   }
 
   setColor() {
@@ -49,7 +59,7 @@ export class CardInfoComponent implements OnInit {
         (numberInfo >= this.maximumMinimumTemperatureValues.minHotWarningTemperature &&
           numberInfo < this.maximumMinimumTemperatureValues.maxHotWarningTemperature) ||
         (numberInfo >= this.maximumMinimumTemperatureValues.minColdWarningTemperature &&
-          numberInfo < this.maximumMinimumTemperatureValues.maxColdWarningTemperature),
+          numberInfo < this.maximumMinimumTemperatureValues.maxColdWarningTemperature)
     };
   }
 
@@ -63,7 +73,7 @@ export class CardInfoComponent implements OnInit {
         numberInfo <= this.maximumMinimumHumidityValues.maxNormalHumidity,
       'warning-value':
         numberInfo > this.maximumMinimumHumidityValues.minWarningHumidity &&
-        numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity,
+        numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity
     };
   }
 }

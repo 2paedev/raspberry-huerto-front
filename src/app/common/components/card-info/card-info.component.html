@@ -1,11 +1,8 @@
 <div class="card-info-wrapper"
      [ngClass]="setColor()">
   <div class="title-section">
-    <img *ngIf="isSymbolTemperature"
-         src="assets/icons/temperature.svg">
-    <img *ngIf="!isSymbolTemperature"
-         src="assets/icons/humidity.svg">
-    <!-- <span class="d-none d-md-block title"> -->
+    <i class="{{iconTitle}}"
+       aria-hidden="true"></i>
     <span class="title">
       {{ title }}
     </span>
@@ -14,7 +11,8 @@
        [ngClass]="setColor()">
     <span class="number">{{ numberInfo }}</span><span class="symbol">{{ symbol }}</span>
   </div>
-  <button class='btn btn-sm btn-outline-primary '>
-    <i class="fa fa-pencil"></i> Stats
+  <button class="btn btn-sm btn-outline-primary"
+          (click)="goToStats()">
+    <i class="icon-chart"></i> Stats
   </button>
 </div>

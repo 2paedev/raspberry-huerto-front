@@ -9,6 +9,7 @@
     align-items: center;
     border: 2px solid;
     border-radius: 5px;
+    border-color: #27ff7a;
     padding: 15px 0;
 
     &.critical-value {
@@ -23,12 +24,17 @@
   }
 
   .title-section {
-    img {
-      height: 40px;
-      width: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #fffcd9;
     }
     .title {
-      margin-left: 2px;
+      margin-left: 5px;
       font-size: 12px;
       border-bottom: 1px solid #fffcd9;
     }
@@ -52,5 +58,10 @@
     .symbol {
       font-size: 16px;
     }
+  }
+
+  button i::before {
+    font-size: 20px;
+    vertical-align: middle;
   }
 }
