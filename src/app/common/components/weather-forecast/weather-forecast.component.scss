@@ -1,0 +1,23 @@
+@import '~src/assets/sass/main';
+
+:host {
+  .wf-wrapper {
+  }
+  .title-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      margin-top: 10px;
+      font-size: 20px;
+      color: $color-white-default;
+    }
+    .title {
+      margin-left: 5px;
+      font-size: 12px;
+      border-bottom: 1px solid $color-white-default;
+    }
+  }
+}

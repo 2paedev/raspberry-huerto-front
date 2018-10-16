@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { VendorComponentsModule } from './vendor-components.module';
 import { PanelErrorComponent } from './panel-error/panel-error.component';
+import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info-modal.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -17,6 +18,7 @@ import { PanelErrorComponent } from './panel-error/panel-error.component';
     CameraZoneComponent,
     LoadingSpinnerComponent,
     PanelErrorComponent,
+    DetailInfoModalComponent,
   ],
   exports: [
     CommonModule,
@@ -26,6 +28,8 @@ import { PanelErrorComponent } from './panel-error/panel-error.component';
     CameraZoneComponent,
     LoadingSpinnerComponent,
     PanelErrorComponent,
+    DetailInfoModalComponent,
   ],
+  entryComponents: [DetailInfoModalComponent],
 })
 export class SharedComponentsModule {}

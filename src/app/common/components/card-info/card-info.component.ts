@@ -6,7 +6,7 @@ import { SYMBOLS } from '../../domain/constants';
 @Component({
   selector: 'app-card-info',
   templateUrl: './card-info.component.html',
-  styleUrls: ['./card-info.component.scss']
+  styleUrls: ['./card-info.component.scss'],
 })
 export class CardInfoComponent implements OnInit {
   @Input()
@@ -59,7 +59,7 @@ export class CardInfoComponent implements OnInit {
         (numberInfo >= this.maximumMinimumTemperatureValues.minHotWarningTemperature &&
           numberInfo < this.maximumMinimumTemperatureValues.maxHotWarningTemperature) ||
         (numberInfo >= this.maximumMinimumTemperatureValues.minColdWarningTemperature &&
-          numberInfo < this.maximumMinimumTemperatureValues.maxColdWarningTemperature)
+          numberInfo < this.maximumMinimumTemperatureValues.maxColdWarningTemperature),
     };
   }
 
@@ -73,7 +73,7 @@ export class CardInfoComponent implements OnInit {
         numberInfo <= this.maximumMinimumHumidityValues.maxNormalHumidity,
       'warning-value':
         numberInfo > this.maximumMinimumHumidityValues.minWarningHumidity &&
-        numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity
+        numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity,
     };
   }
 }

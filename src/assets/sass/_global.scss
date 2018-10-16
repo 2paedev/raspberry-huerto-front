@@ -1,3 +1,5 @@
+@import 'global-variables';
+
 html {
   position: relative;
   min-height: 100%;
@@ -6,12 +8,12 @@ html {
 
 body {
   min-height: 100%;
-  min-width: 300px;
+  min-width: $min-width;
   height: 100%;
   margin: 0 auto;
   font-family: $font;
-  color: #fffcd9;
-  background-color: #1d203b;
+  color: $color-white-default;
+  background-color: $color-blue-darkest;
   letter-spacing: 3px;
 }
 
@@ -32,5 +34,10 @@ hr {
   border: 0;
   height: 3px;
   margin: 0 6rem;
-  background-image: linear-gradient(to right, #1d203b, #74eebb, #1d203b);
+  background-image: linear-gradient(
+    to right,
+    $color-blue-darkest,
+    $color-green-primary,
+    $color-blue-darkest
+  );
 }

@@ -1,8 +1,8 @@
 import { environment } from '../../../../environments/environment';
 
-const URL_BASE = environment.baseURL;
+const BASE_URL = environment.baseURL;
 
 export const URLS_API = {
-  TEST: `${URL_BASE}/test`,
-  ALL_CARD_INFO: `${URL_BASE}/wheather/site/all`,
+  TEST: `${BASE_URL}/test`,
+  ALL_CARD_INFO: `${BASE_URL}/wheather/site/all`
 };

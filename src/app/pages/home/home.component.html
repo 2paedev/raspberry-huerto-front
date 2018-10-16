@@ -3,7 +3,7 @@
 <section class="container">
   <div class="row">
     <div class="card-info-wrapper col-xs-12 col-md-4"
-         *ngIf="!errorInCardInfo">
+         *ngIf="!error.inCardInfo">
       <app-card-info title="Humidity(Ground)"
                      iconTitle="icon-humidity"
                      [identificator]="cardInfoIds.HUMIDITY_GROUND"
@@ -12,7 +12,7 @@
                      (callbackStats)="goToCardStats($event)"></app-card-info>
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
-         *ngIf="!errorInCardInfo">
+         *ngIf="!error.inCardInfo">
       <app-card-info title="Temperature(Air)"
                      iconTitle="icon-thermometer"
                      [identificator]="cardInfoIds.TEMPERATURE_AIR"
@@ -21,7 +21,7 @@
                      (callbackStats)="goToCardStats($event)"></app-card-info>
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
-         *ngIf="!errorInCardInfo">
+         *ngIf="!error.inCardInfo">
       <app-card-info title="Humidity(Air)"
                      iconTitle="icon-humidity-env"
                      [identificator]="cardInfoIds.HUMIDITY_AIR"
@@ -30,14 +30,24 @@
                      (callbackStats)="goToCardStats($event)"></app-card-info>
     </div>
     <div class="col"
-         *ngIf="errorInCardInfo">
-      <app-panel-error message="{{errorInCardInfoMessage}}"></app-panel-error>
+         *ngIf="error.inCardInfo">
+      <app-panel-error message="{{messageError.inCardInfo}}"></app-panel-error>
     </div>
   </div>
   <hr>
   <div class="row">
-    <div class="col">
-      <app-weather-forecast></app-weather-forecast>
+    <div class="col"
+         *ngIf="!error.inWeatherForecast && !dataWeatherForecastLoaded">
+      <span>Loading OpenWeatherMap data...</span>
+    </div>
+    <div class="col"
+         *ngIf="!error.inWeatherForecast && dataWeatherForecastLoaded">
+      <app-weather-forecast *ngIf="municipioData"
+                            [municipioData]="municipioData"></app-weather-forecast>
+    </div>
+    <div class="col"
+         *ngIf="error.inWeatherForecast">
+      <app-panel-error message="{{messageError.inWeatherForecast}}"></app-panel-error>
     </div>
   </div>
   <hr>
