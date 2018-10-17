@@ -1,4 +1,5 @@
 <div class="wf-wrapper">
+
   <div class="title-section"
        (click)="openCityInfoModal()">
     <i class="icon-home"
@@ -7,4 +8,11 @@
       {{ title }}
     </span>
   </div>
+
+  <div class="cards-section"
+       *ngIf="dailyPredictionData">
+    <app-card-weather-forecast *ngFor="let predictionData of dailyPredictionData.prediction"
+                               [predictionData]="predictionData"></app-card-weather-forecast>
+  </div>
+
 </div>

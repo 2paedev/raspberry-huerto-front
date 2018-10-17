@@ -10,12 +10,14 @@ import { City } from 'src/app/common/models/city';
 // tslint:disable-next-line:max-line-length
 import { WeatherForecastFormatter } from 'src/app/common/components/weather-forecast/weather-forecast-formatter.components';
 import { formatMessageError } from 'src/app/common/helpers/errors';
+import { AemetPredictionService } from 'src/app/common/domain/api/aemet/aemet-prediction.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [CardInfoService, AemetMasterService],
+  providers: [CardInfoService, AemetMasterService, AemetPredictionService],
 })
 export class HomeComponent implements OnInit {
   symbols = SYMBOLS;
@@ -31,12 +33,15 @@ export class HomeComponent implements OnInit {
   cardInfoIds = CARD_INFO;
 
   municipioData: City;
+  weatherDailyPredictionData: any;
 
   constructor(
     private cardInfoApi: CardInfoService,
     private aemetMasterApi: AemetMasterService,
+    private aemetPredictionApi: AemetPredictionService,
     private weatherForecastFormatter: WeatherForecastFormatter,
     private router: Router,
+    private httpClient: HttpClient,
   ) {}
 
   ngOnInit() {
@@ -50,7 +55,8 @@ export class HomeComponent implements OnInit {
     // interval(INTERVAL_TIME_REQUESTS).subscribe((val) => {
     //   this.getAllCardInfo();
     // });
-    this.getWheatherData();
+    this.getMunicipioData();
+    this.getDailyPredictionWeather();
   }
 
   initVariables() {
@@ -82,13 +88,37 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  getWheatherData() {
+  getMunicipioData() {
     this.dataWeatherForecastLoaded = false;
     this.aemetMasterApi.getMunicipio({}).subscribe(
       (response) => {
         this.error.inWeatherForecast = false;
         this.dataWeatherForecastLoaded = true;
         this.municipioData = this.weatherForecastFormatter.formatMunicipioInfo(response[0]);
+      },
+      (error) => {
+        this.error.inWeatherForecast = true;
+        this.dataWeatherForecastLoaded = false;
+        this.messageError.inWeatherForecast = formatMessageError(
+          error,
+          MESSAGE_ERROR.OPENWEATHERMAP,
+        );
+      },
+    );
+  }
+
+  getDailyPredictionWeather() {
+    this.dataWeatherForecastLoaded = false;
+    this.aemetPredictionApi.getDailyPrediction({}).subscribe(
+      (response) => {
+        this.error.inWeatherForecast = false;
+        this.dataWeatherForecastLoaded = true;
+        this.httpClient.get<any>(response.datos, {}).subscribe((predictionData) => {
+          console.log(predictionData);
+          this.weatherDailyPredictionData = this.weatherForecastFormatter.formatPredictionDailyData(
+            predictionData[0],
+          );
+        });
       },
       (error) => {
         this.error.inWeatherForecast = true;

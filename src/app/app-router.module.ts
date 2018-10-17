@@ -27,11 +27,6 @@ export const routesAppModule: Routes = [
     loadChildren: './pages/stats/humidity/air/humidity-air-stats.module#HumidityAirStatsModule',
     runGuardsAndResolvers: 'always',
   },
-  // {
-  //   path: PAGINAS_RUTAS.POLIZA,
-  //   loadChildren: './caracteristicas/poliza/poliza.module#PolizaModulo',
-  //   runGuardsAndResolvers: 'always',
-  // },
 ];
 
 @NgModule({

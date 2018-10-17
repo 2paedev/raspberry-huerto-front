@@ -19,6 +19,7 @@ export class CardInfoComponent implements OnInit {
   symbol: string;
   @Input()
   numberInfo: string;
+
   @Output()
   callbackStats = new EventEmitter();
 

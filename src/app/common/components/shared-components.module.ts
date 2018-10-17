@@ -8,6 +8,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { VendorComponentsModule } from './vendor-components.module';
 import { PanelErrorComponent } from './panel-error/panel-error.component';
 import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info-modal.component';
+import { CustomButtomComponent } from './custom-buttom/custom-buttom.component';
+import { CardWeatherForecastComponent } from './card-weather-forecast/card-weather-forecast.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -19,6 +21,8 @@ import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info
     LoadingSpinnerComponent,
     PanelErrorComponent,
     DetailInfoModalComponent,
+    CustomButtomComponent,
+    CardWeatherForecastComponent,
   ],
   exports: [
     CommonModule,
@@ -29,6 +33,8 @@ import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info
     LoadingSpinnerComponent,
     PanelErrorComponent,
     DetailInfoModalComponent,
+    CustomButtomComponent,
+    CardWeatherForecastComponent,
   ],
   entryComponents: [DetailInfoModalComponent],
 })

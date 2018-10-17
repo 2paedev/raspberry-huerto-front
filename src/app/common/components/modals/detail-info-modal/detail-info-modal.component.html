@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h1>Detail "Municipio" info</h1>
+  <h1>"Municipio" info</h1>
   <button type="button"
           class="close"
           aria-label="Close"
@@ -14,7 +14,6 @@
   </div>
 </div>
 <div class="modal-footer center-button">
-  <button class="btn btn-sm btn-outline-primary"
-          (click)="activeModal.close('Close click')"> Close
-  </button>
+  <app-custom-button (action)="activeModal.close('Close click')"
+                     label="Close"></app-custom-button>
 </div>

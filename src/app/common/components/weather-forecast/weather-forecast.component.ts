@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailInfoModalComponent } from '../modals/detail-info-modal/detail-info-modal.component';
 // tslint:disable-next-line:max-line-length
 import { DetailInfoModalFormatter } from '../modals/detail-info-modal/detail-info-modal-formatter.component';
+import { DailyWeather } from '../../models/daily-weather';
 
 const OPTIONS_DETAIL_INFO_MODAL = {
   windowClass: 'detail-info-modal',
@@ -20,6 +21,9 @@ const OPTIONS_DETAIL_INFO_MODAL = {
 export class WeatherForecastComponent implements OnInit {
   @Input()
   municipioData: City;
+
+  @Input()
+  dailyPredictionData: DailyWeather;
 
   title: string;
   cityInfoModal: any;

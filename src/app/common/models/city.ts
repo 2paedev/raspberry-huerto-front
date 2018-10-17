@@ -1,4 +1,5 @@
 export class City {
+  id: Number;
   name: string;
   latitude: string;
   latitudeDec: string;

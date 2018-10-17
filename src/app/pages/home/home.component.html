@@ -43,7 +43,8 @@
     <div class="col"
          *ngIf="!error.inWeatherForecast && dataWeatherForecastLoaded">
       <app-weather-forecast *ngIf="municipioData"
-                            [municipioData]="municipioData"></app-weather-forecast>
+                            [municipioData]="municipioData"
+                            [dailyPredictionData]="weatherDailyPredictionData"></app-weather-forecast>
     </div>
     <div class="col"
          *ngIf="error.inWeatherForecast">

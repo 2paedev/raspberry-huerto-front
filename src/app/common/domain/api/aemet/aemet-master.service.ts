@@ -17,13 +17,13 @@ export class AemetMasterService {
 
     return this.clienteHttp.get<any>(getMunicipiosURL, { headers, params: queryParams }).pipe(
       tap(() => {}, () => {}),
-      finalize(() => {}),
+      finalize(() => {})
     );
   }
 
   public getMunicipio(params: any): Observable<any> {
     const getMunicipioURL = `${AEMET_API.MASTER.MUNICIPIO}/${
-      AEMET_API_INFO.SAN_VICENTE_RASPEIG_ID
+      AEMET_API_INFO.SAN_VICENTE_RASPEIG.ID
     }`;
 
     let headers = new HttpHeaders();
@@ -32,7 +32,7 @@ export class AemetMasterService {
 
     return this.clienteHttp.get<any>(getMunicipioURL, { headers, params: queryParams }).pipe(
       tap(() => {}, () => {}),
-      finalize(() => {}),
+      finalize(() => {})
     );
   }
 }
