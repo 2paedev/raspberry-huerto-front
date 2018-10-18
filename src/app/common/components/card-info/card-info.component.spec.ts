@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SharedComponentsModule } from '../shared-components.module';
 import { CardInfoComponent } from './card-info.component';
 
 describe('CardInfoComponent', () => {
@@ -8,7 +9,7 @@ describe('CardInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CardInfoComponent],
+      imports: [SharedComponentsModule]
     }).compileComponents();
   }));
 

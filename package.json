@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --sourceMap=false",
+    "testsourcemap": "ng test --sourceMap=true",
+    "testsinglerun": "ng test --watch=false --sourceMap=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "mocks": "dyson ./mocks"

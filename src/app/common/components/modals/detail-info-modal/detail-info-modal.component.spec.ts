@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedComponentsModule } from '../../shared-components.module';
 import { DetailInfoModalComponent } from './detail-info-modal.component';
 
 describe('DetailInfoModalComponent', () => {
@@ -8,9 +10,9 @@ describe('DetailInfoModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailInfoModalComponent ]
-    })
-    .compileComponents();
+      imports: [SharedComponentsModule],
+      providers: [NgbActiveModal],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

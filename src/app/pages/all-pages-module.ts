@@ -9,7 +9,7 @@ import { TemperatureAirStatsModule } from './stats/temperature/air/temperature-a
     HomeModule,
     HumidityGroundStatsModule,
     HumidityAirStatsModule,
-    TemperatureAirStatsModule
-  ]
+    TemperatureAirStatsModule,
+  ],
 })
 export class AllPagesModule {}

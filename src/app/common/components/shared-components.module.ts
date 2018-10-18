@@ -9,6 +9,7 @@ import { VendorComponentsModule } from './vendor-components.module';
 import { PanelErrorComponent } from './panel-error/panel-error.component';
 import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info-modal.component';
 import { CustomButtomComponent } from './custom-buttom/custom-buttom.component';
+// tslint:disable-next-line:max-line-length
 import { CardWeatherForecastComponent } from './card-weather-forecast/card-weather-forecast.component';
 
 @NgModule({

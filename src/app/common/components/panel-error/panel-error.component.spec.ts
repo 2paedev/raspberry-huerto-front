@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PanelErrorComponent } from './panel-error.component';
+import { SharedComponentsModule } from '../shared-components.module';
 
 describe('PanelErrorComponent', () => {
   let component: PanelErrorComponent;
@@ -8,9 +9,8 @@ describe('PanelErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PanelErrorComponent ]
-    })
-    .compileComponents();
+      imports: [SharedComponentsModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
