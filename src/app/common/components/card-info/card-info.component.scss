@@ -9,17 +9,17 @@
     align-items: center;
     border: 2px solid;
     border-radius: 5px;
-    border-color: #27ff7a;
+    border-color: $color-green-default;
     padding: 15px 0;
 
     &.critical-value {
-      border-color: #ff4040;
+      border-color: $color-red-default;
     }
     &.normal-value {
-      border-color: #27ff7a;
+      border-color: $color-green-default;
     }
     &.warning-value {
-      border-color: #e5ff51;
+      border-color: $color-yellow-default;
     }
   }
 
@@ -31,25 +31,26 @@
     i {
       margin-top: 10px;
       font-size: 20px;
-      color: #fffcd9;
+      color: $color-white-default;
     }
     .title {
       margin-left: 5px;
       font-size: 12px;
-      border-bottom: 1px solid #fffcd9;
+      border-bottom: 1px solid $color-white-default;
+      cursor: pointer;
     }
   }
 
   .info-section {
-    color: #27ff7a;
+    color: $color-green-default;
     &.critical-value {
-      color: #ff4040;
+      color: $color-red-default;
     }
     &.normal-value {
-      color: #27ff7a;
+      color: $color-green-default;
     }
     &.warning-value {
-      color: #e5ff51;
+      color: $color-yellow-default;
     }
     .number {
       margin-left: 5px;
@@ -58,10 +59,5 @@
     .symbol {
       font-size: 16px;
     }
-  }
-
-  button i::before {
-    font-size: 20px;
-    vertical-align: middle;
   }
 }

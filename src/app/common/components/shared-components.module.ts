@@ -7,6 +7,13 @@ import { CommonModule } from '@angular/common';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { VendorComponentsModule } from './vendor-components.module';
 import { PanelErrorComponent } from './panel-error/panel-error.component';
+import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info-modal.component';
+import { CustomButtomComponent } from './custom-buttom/custom-buttom.component';
+// tslint:disable-next-line:max-line-length
+import { CardWeatherForecastComponent } from './card-weather-forecast/card-weather-forecast.component';
+import { PanelInfoModalComponent } from './modals/panel-info-modal/panel-info-modal.component';
+import { ModalHeaderComponent } from './modals/modal-header/modal-header.component';
+import { ModalFooterComponent } from './modals/modal-footer/modal-footer.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -17,6 +24,12 @@ import { PanelErrorComponent } from './panel-error/panel-error.component';
     CameraZoneComponent,
     LoadingSpinnerComponent,
     PanelErrorComponent,
+    DetailInfoModalComponent,
+    CustomButtomComponent,
+    CardWeatherForecastComponent,
+    PanelInfoModalComponent,
+    ModalHeaderComponent,
+    ModalFooterComponent,
   ],
   exports: [
     CommonModule,
@@ -26,6 +39,13 @@ import { PanelErrorComponent } from './panel-error/panel-error.component';
     CameraZoneComponent,
     LoadingSpinnerComponent,
     PanelErrorComponent,
+    DetailInfoModalComponent,
+    CustomButtomComponent,
+    CardWeatherForecastComponent,
+    PanelInfoModalComponent,
+    ModalHeaderComponent,
+    ModalFooterComponent,
   ],
+  entryComponents: [DetailInfoModalComponent, PanelInfoModalComponent],
 })
 export class SharedComponentsModule {}

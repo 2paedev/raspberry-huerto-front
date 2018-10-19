@@ -1,0 +1,8 @@
+<app-modal-header title="{{ title }}"></app-modal-header>
+<div class="modal-body">
+  <div *ngFor="let info of infoData"
+       class="data-row">
+    <span><strong>{{ info.label }}:</strong> {{ info.text }}</span>
+  </div>
+</div>
+<app-modal-footer label="{{ texts.LABELS.CLOSE }}"></app-modal-footer>

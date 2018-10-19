@@ -1,0 +1,40 @@
+@import '~src/assets/sass/main';
+
+:host {
+  .wf-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .title-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      margin-top: 10px;
+      font-size: 20px;
+      color: $color-white-default;
+    }
+    .title {
+      margin-left: 5px;
+      font-size: 12px;
+      border-bottom: 1px solid $color-white-default;
+      cursor: pointer;
+    }
+  }
+
+  .cards-section {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    app-card-weather-forecast {
+      margin-right: 15px;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<section class="card-wf-wrapper">
+  <span>{{ predictionData.date }}</span>
+  <img src="{{ iconWeather }}">
+  <div class="data-section">
+    <span>ºC: {{ predictionData.temperature.max }}/{{ predictionData.temperature.min }}</span>
+    <span>%: {{ predictionData.relativeHumidity.max }}/{{ predictionData.relativeHumidity.min }}</span>
+  </div>
+</section>

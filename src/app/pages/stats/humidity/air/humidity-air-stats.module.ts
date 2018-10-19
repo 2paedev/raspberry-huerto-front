@@ -5,6 +5,6 @@ import { SharedComponentsModule } from 'src/app/common/components/shared-compone
 
 @NgModule({
   imports: [HumidityAirStatsRouterModule, SharedComponentsModule],
-  declarations: [HumidityAirStatsComponent]
+  declarations: [HumidityAirStatsComponent],
 })
 export class HumidityAirStatsModule {}

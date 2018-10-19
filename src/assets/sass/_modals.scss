@@ -1,0 +1,53 @@
+@import 'global-variables';
+
+.modal-dialog {
+  max-width: 480px;
+  min-width: $min-width;
+  min-height: 100px;
+  border-radius: 4px;
+  border: 1px solid $color-green-primary;
+}
+
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  background-color: $color-blue-darkest;
+  color: $color-white-default;
+  border: 1px solid $color-green-primary;
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .close,
+  .close:hover,
+  .close:not(:disabled):not(.disabled):hover,
+  .close:not(:disabled):not(.disabled):focus {
+    color: $color-green-primary !important;
+    outline-color: transparent;
+  }
+}
+
+.modal-body {
+  background-color: $color-blue-darkest;
+  color: $color-white-default;
+  border: 1px solid $color-green-primary;
+  font-size: 10px;
+}
+
+.modal-footer {
+  background-color: $color-blue-darkest;
+  outline-color: transparent;
+  color: $color-white-default;
+  border: 1px solid $color-green-primary;
+  justify-content: flex-end;
+
+  &.center-button {
+    justify-content: center;
+  }
+}

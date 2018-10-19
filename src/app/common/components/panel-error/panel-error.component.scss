@@ -1,11 +1,13 @@
+@import '~src/assets/sass/main';
+
 :host {
   p {
     margin: 0 35px;
   }
 
   .alert-custom {
-    color: #5d141d;
-    background-color: #ff5555;
-    border-color: #5d141d;
+    color: $color-red-secondary;
+    background-color: $color-red-primary;
+    border-color: $color-red-secondary;
   }
 }

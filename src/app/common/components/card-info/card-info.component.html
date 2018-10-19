@@ -3,7 +3,8 @@
   <div class="title-section">
     <i class="{{iconTitle}}"
        aria-hidden="true"></i>
-    <span class="title">
+    <span class="title"
+          (click)="openPanelInfoModal()">
       {{ title }}
     </span>
   </div>
@@ -11,8 +12,7 @@
        [ngClass]="setColor()">
     <span class="number">{{ numberInfo }}</span><span class="symbol">{{ symbol }}</span>
   </div>
-  <button class="btn btn-sm btn-outline-primary"
-          (click)="goToStats()">
-    <i class="icon-chart"></i> Stats
-  </button>
+  <app-custom-button (action)="goToStats($event)"
+                     icon="icon-chart"
+                     label="{{ texts.LABELS.STATS }}"></app-custom-button>
 </div>

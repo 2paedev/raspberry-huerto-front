@@ -1,0 +1,26 @@
+@import '~src/assets/sass/main';
+
+:host {
+  .title-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      margin-top: 10px;
+      font-size: 20px;
+      color: $color-white-default;
+    }
+    .title {
+      margin-left: 5px;
+      font-size: 12px;
+      border-bottom: 1px solid $color-white-default;
+      cursor: pointer;
+    }
+  }
+
+  .camera-section {
+    margin-top: 20px;
+  }
+}

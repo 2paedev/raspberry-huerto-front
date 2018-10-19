@@ -1,0 +1,9 @@
+@import '~src/assets/sass/main';
+
+:host {
+  button i::before {
+    font-size: 20px;
+    vertical-align: middle;
+    //color: $color-blue-primary !important;
+  }
+}
