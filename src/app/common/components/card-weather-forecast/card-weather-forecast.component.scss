@@ -1,4 +1,16 @@
 @import '~src/assets/sass/main';
 
 :host {
+  .card-wf-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
 }

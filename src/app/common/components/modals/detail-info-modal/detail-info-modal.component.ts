@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { TEXTS } from 'src/app/common/domain/texts';
 
 @Component({
   selector: 'app-detail-info-modal',
@@ -9,8 +9,18 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class DetailInfoModalComponent implements OnInit {
   @Input()
   infoData: any;
+  @Input()
+  title: string;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  texts: any;
 
-  ngOnInit() {}
+  constructor() {}
+
+  ngOnInit() {
+    this.init();
+  }
+
+  init() {
+    this.texts = TEXTS;
+  }
 }

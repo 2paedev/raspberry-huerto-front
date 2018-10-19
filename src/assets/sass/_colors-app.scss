@@ -1,17 +1,21 @@
-$green: #27ff7a, #74eebb;
-$green300: nth($green, 1);
-$green500: nth($green, 2);
+$app-green: #27ff7a, #74eebb;
+$green300: nth($app-green, 1);
+$green500: nth($app-green, 2);
 
-$red: #ff5555, #ff4040, #5d141d;
-$red250: nth($red, 1);
-$red300: nth($red, 2);
-$red800: nth($red, 3);
+$app-red: #ff5555, #ff4040, #5d141d;
+$red250: nth($app-red, 1);
+$red300: nth($app-red, 2);
+$red800: nth($app-red, 3);
 
-$yellow: #e5ff51;
-$yellow300: nth($yellow, 1);
+$app-yellow: #e5ff51;
+$yellow300: nth($app-yellow, 1);
 
-$white: #fffcd9;
-$white300: nth($white, 1);
+$app-white: #fffcd9;
+$white300: nth($app-white, 1);
 
-$blue: #1d203b;
-$blue800: nth($blue, 1);
+$app-blue: #2533b3, #1d203b;
+$blue300: nth($app-blue, 1);
+$blue800: nth($app-blue, 2);
+
+$app-grey: #525252;
+$grey400: nth($app-grey, 1);

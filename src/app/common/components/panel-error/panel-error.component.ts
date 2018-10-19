@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TEXTS } from '../../domain/texts';
 
 @Component({
   selector: 'app-panel-error',
@@ -7,12 +8,22 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./panel-error.component.scss'],
   providers: [NgbAlertConfig],
 })
-export class PanelErrorComponent {
+export class PanelErrorComponent implements OnInit {
   @Input()
   message: string;
+
+  texts: any;
 
   constructor(alertConfig: NgbAlertConfig) {
     alertConfig.type = 'custom';
     alertConfig.dismissible = false;
+  }
+
+  ngOnInit() {
+    this.init();
+  }
+
+  init() {
+    this.texts = TEXTS;
   }
 }

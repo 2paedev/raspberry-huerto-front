@@ -4,30 +4,36 @@
   <div class="row">
     <div class="card-info-wrapper col-xs-12 col-md-4"
          *ngIf="!error.inCardInfo">
-      <app-card-info title="Humidity(Ground)"
+      <app-card-info title="{{ texts.CARD_INFO.TITLE.HUMIDITY_GROUND }}"
                      iconTitle="icon-humidity"
                      [identificator]="cardInfoIds.HUMIDITY_GROUND"
                      [symbol]="symbols.HUMIDITY"
                      [numberInfo]="cardInfoValues.humidityGround"
-                     (callbackStats)="goToCardStats($event)"></app-card-info>
+                     (callbackStats)="goToCardStats($event)"
+                     [panelMessage]="cardInfoPanelMessage.humidityGround"
+                     panelTitle="texts.CARD_INFO.TITLE.HUMIDITY_GROUND"></app-card-info>
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
          *ngIf="!error.inCardInfo">
-      <app-card-info title="Temperature(Air)"
+      <app-card-info title="texts.CARD_INFO.TITLE.TEMPERATURE_AIR"
                      iconTitle="icon-thermometer"
                      [identificator]="cardInfoIds.TEMPERATURE_AIR"
                      [symbol]="symbols.TEMPERATURE"
                      [numberInfo]="cardInfoValues.temperatureAir"
-                     (callbackStats)="goToCardStats($event)"></app-card-info>
+                     (callbackStats)="goToCardStats($event)"
+                     [panelMessage]="cardInfoPanelMessage.temperatureAir"
+                     panelTitle="texts.CARD_INFO.TITLE.TEMPERATURE_AIR"></app-card-info>
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
          *ngIf="!error.inCardInfo">
-      <app-card-info title="Humidity(Air)"
+      <app-card-info title="texts.CARD_INFO.TITLE.HUMIDITY_AIR"
                      iconTitle="icon-humidity-env"
                      [identificator]="cardInfoIds.HUMIDITY_AIR"
                      [symbol]="symbols.HUMIDITY"
                      [numberInfo]="cardInfoValues.humidityAir"
-                     (callbackStats)="goToCardStats($event)"></app-card-info>
+                     (callbackStats)="goToCardStats($event)"
+                     [panelMessage]="cardInfoPanelMessage.humidityAir"
+                     panelTitle="texts.CARD_INFO.TITLE.HUMIDITY_AIR"></app-card-info>
     </div>
     <div class="col"
          *ngIf="error.inCardInfo">
@@ -38,7 +44,7 @@
   <div class="row">
     <div class="col"
          *ngIf="!error.inWeatherForecast && !dataWeatherForecastLoaded">
-      <span>Loading OpenWeatherMap data...</span>
+      <span>{{ texts.LOADINGS_TEXTS.AEMET_API }}</span>
     </div>
     <div class="col"
          *ngIf="!error.inWeatherForecast && dataWeatherForecastLoaded">
@@ -54,13 +60,13 @@
   <hr>
   <div class="row">
     <div class="col">
-      <app-irrigation-settings></app-irrigation-settings>
+      <app-irrigation-settings title="{{ texts.IRRIGATION_SETTINGS.TITLE }}"></app-irrigation-settings>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col">
-      <app-camera-zone></app-camera-zone>
+      <app-camera-zone title="{{ texts.CAMERA_ZONE.TITLE }}"></app-camera-zone>
     </div>
   </div>
 </section>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { City } from '../../models/city';
+import { City } from '../models/city';
 import {
   DailyWeather,
   Prediction,
   MaxMin,
   PeriodValues,
   WindValues,
-} from '../../models/daily-weather';
+} from '../models/daily-weather';
 import { ValueTransformer } from '@angular/compiler/src/util';
 
 @Injectable({

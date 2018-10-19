@@ -3,11 +3,18 @@ import { City } from '../../models/city';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailInfoModalComponent } from '../modals/detail-info-modal/detail-info-modal.component';
 // tslint:disable-next-line:max-line-length
-import { DetailInfoModalFormatter } from '../modals/detail-info-modal/detail-info-modal-formatter.component';
+import { DetailInfoModalFormatter } from '../../formatters/detail-info-modal-formatter.component';
 import { DailyWeather } from '../../models/daily-weather';
+import { PanelInfoModalComponent } from '../modals/panel-info-modal/panel-info-modal.component';
+import { TEXTS } from '../../domain/texts';
 
 const OPTIONS_DETAIL_INFO_MODAL = {
   windowClass: 'detail-info-modal',
+  backdrop: 'static' as 'static',
+  keyboard: false,
+};
+const OPTIONS_PANEL_INFO_MODAL = {
+  windowClass: 'weather-forecast-panel-info-modal',
   backdrop: 'static' as 'static',
   keyboard: false,
 };
@@ -26,7 +33,7 @@ export class WeatherForecastComponent implements OnInit {
   dailyPredictionData: DailyWeather;
 
   title: string;
-  cityInfoModal: any;
+  modals: any;
 
   constructor(
     private serviceModal: NgbModal,
@@ -43,16 +50,43 @@ export class WeatherForecastComponent implements OnInit {
 
   initVariables() {
     this.title = this.municipioData.name;
+    this.modals = {
+      cityInfo: undefined,
+      predictionDataModal: undefined,
+      panelInfo: undefined,
+    };
   }
 
   openCityInfoModal() {
-    this.cityInfoModal = this.serviceModal.open(
+    this.modals.cityInfoModal = this.serviceModal.open(
       DetailInfoModalComponent,
       OPTIONS_DETAIL_INFO_MODAL,
     );
     // tslint:disable-next-line:max-line-length
-    this.cityInfoModal.componentInstance.infoData = this.detailInfoModalFormatter.formatDetailInfoData(
+    this.modals.cityInfoModal.componentInstance.infoData = this.detailInfoModalFormatter.formatDetailInfoData(
       this.municipioData,
     );
+    this.modals.cityInfoModal.componentInstance.title = TEXTS.CITY_INFO_MODAL_TITLE;
+  }
+
+  openPredictionDataModal(dayIndex) {
+    this.modals.predictionDataModal = this.serviceModal.open(
+      DetailInfoModalComponent,
+      OPTIONS_DETAIL_INFO_MODAL,
+    );
+    // tslint:disable-next-line:max-line-length
+    this.modals.predictionDataModal.componentInstance.predictionData = this.detailInfoModalFormatter.formatDetailPredictionData(
+      this.dailyPredictionData.prediction[dayIndex],
+    );
+    this.modals.predictionDataModal.componentInstance.title = TEXTS.PREDICTION_DATA_MODAL_TITLE;
+  }
+
+  openPanelInfoModal() {
+    this.modals.panelInfo = this.serviceModal.open(
+      PanelInfoModalComponent,
+      OPTIONS_PANEL_INFO_MODAL,
+    );
+    this.modals.panelInfo.componentInstance.messagesInfo = ['Test Message 1', 'Test Message 2'];
+    this.modals.panelInfo.componentInstance.title = TEXTS.PANEL_INFO_MODAL_TITLE.WEATHER_FORECAST;
   }
 }

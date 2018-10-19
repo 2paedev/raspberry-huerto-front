@@ -11,6 +11,9 @@ import { DetailInfoModalComponent } from './modals/detail-info-modal/detail-info
 import { CustomButtomComponent } from './custom-buttom/custom-buttom.component';
 // tslint:disable-next-line:max-line-length
 import { CardWeatherForecastComponent } from './card-weather-forecast/card-weather-forecast.component';
+import { PanelInfoModalComponent } from './modals/panel-info-modal/panel-info-modal.component';
+import { ModalHeaderComponent } from './modals/modal-header/modal-header.component';
+import { ModalFooterComponent } from './modals/modal-footer/modal-footer.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -24,6 +27,9 @@ import { CardWeatherForecastComponent } from './card-weather-forecast/card-weath
     DetailInfoModalComponent,
     CustomButtomComponent,
     CardWeatherForecastComponent,
+    PanelInfoModalComponent,
+    ModalHeaderComponent,
+    ModalFooterComponent,
   ],
   exports: [
     CommonModule,
@@ -36,7 +42,10 @@ import { CardWeatherForecastComponent } from './card-weather-forecast/card-weath
     DetailInfoModalComponent,
     CustomButtomComponent,
     CardWeatherForecastComponent,
+    PanelInfoModalComponent,
+    ModalHeaderComponent,
+    ModalFooterComponent,
   ],
-  entryComponents: [DetailInfoModalComponent],
+  entryComponents: [DetailInfoModalComponent, PanelInfoModalComponent],
 })
 export class SharedComponentsModule {}

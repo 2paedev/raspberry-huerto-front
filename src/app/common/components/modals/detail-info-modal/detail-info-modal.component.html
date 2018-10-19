@@ -1,19 +1,8 @@
-<div class="modal-header">
-  <h1>"Municipio" info</h1>
-  <button type="button"
-          class="close"
-          aria-label="Close"
-          (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+<app-modal-header title="{{ title }}"></app-modal-header>
 <div class="modal-body">
   <div *ngFor="let info of infoData"
        class="data-row">
     <span><strong>{{ info.label }}:</strong> {{ info.text }}</span>
   </div>
 </div>
-<div class="modal-footer center-button">
-  <app-custom-button (action)="activeModal.close('Close click')"
-                     label="Close"></app-custom-button>
-</div>
+<app-modal-footer label="{{ texts.LABELS.CLOSE }}"></app-modal-footer>

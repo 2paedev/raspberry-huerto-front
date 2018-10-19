@@ -1,9 +1,10 @@
 <div class="card-info-wrapper"
      [ngClass]="setColor()">
   <div class="title-section">
-    <i class="icon-home"
+    <i class="{{iconTitle}}"
        aria-hidden="true"></i>
-    <span class="title">
+    <span class="title"
+          (click)="openPanelInfoModal()">
       {{ title }}
     </span>
   </div>
@@ -13,5 +14,5 @@
   </div>
   <app-custom-button (action)="goToStats($event)"
                      icon="icon-chart"
-                     label="Stats"></app-custom-button>
+                     label="{{ texts.LABELS.STATS }}"></app-custom-button>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SYMBOLS, CARD_INFO, MESSAGE_ERROR } from 'src/app/common/domain/constants';
+import { SYMBOLS, CARD_INFO } from 'src/app/common/domain/constants';
 import { interval } from 'rxjs/internal/observable/interval';
 import { INTERVAL_TIME_REQUESTS } from 'src/app/common/helpers/config-requests';
 import { CardInfoService } from 'src/app/common/domain/api/card-info.service';
@@ -8,10 +8,11 @@ import { APP_ROUTES } from 'src/app/common/domain/routes';
 import { AemetMasterService } from 'src/app/common/domain/api/aemet/aemet-master.service';
 import { City } from 'src/app/common/models/city';
 // tslint:disable-next-line:max-line-length
-import { WeatherForecastFormatter } from 'src/app/common/components/weather-forecast/weather-forecast-formatter.components';
+import { WeatherForecastFormatter } from 'src/app/common/formatters/weather-forecast-formatter.components';
 import { formatMessageError } from 'src/app/common/helpers/errors';
 import { AemetPredictionService } from 'src/app/common/domain/api/aemet/aemet-prediction.service';
 import { HttpClient } from '@angular/common/http';
+import { TEXTS } from 'src/app/common/domain/texts';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,9 @@ export class HomeComponent implements OnInit {
   dataWeatherForecastLoaded: boolean;
   error: any;
   messageError: any;
+  cardInfoPanelMessage: any;
   cardInfoIds = CARD_INFO;
+  texts: any;
 
   municipioData: City;
   weatherDailyPredictionData: any;
@@ -70,6 +73,12 @@ export class HomeComponent implements OnInit {
       inCardInfo: '',
       inWeatherForecast: '',
     };
+    this.cardInfoPanelMessage = {
+      humidityGround: ['Message 1', 'Message 2'],
+      temperatureAir: ['Message 1', 'Message 2'],
+      humidityAir: ['Message 1', 'Message 2'],
+    };
+    this.texts = TEXTS;
   }
 
   getAllCardInfo() {
@@ -83,7 +92,7 @@ export class HomeComponent implements OnInit {
       (error) => {
         this.showingSpinner = false;
         this.error.inCardInfo = true;
-        this.messageError.inCardInfo = formatMessageError(error, MESSAGE_ERROR.CARD_INFO);
+        this.messageError.inCardInfo = formatMessageError(error, TEXTS.MESSAGE_ERRORS.CARD_INFO);
       },
     );
   }
@@ -101,7 +110,7 @@ export class HomeComponent implements OnInit {
         this.dataWeatherForecastLoaded = false;
         this.messageError.inWeatherForecast = formatMessageError(
           error,
-          MESSAGE_ERROR.OPENWEATHERMAP,
+          TEXTS.MESSAGE_ERRORS.AEMET_OPEN_DATA,
         );
       },
     );
@@ -125,7 +134,7 @@ export class HomeComponent implements OnInit {
         this.dataWeatherForecastLoaded = false;
         this.messageError.inWeatherForecast = formatMessageError(
           error,
-          MESSAGE_ERROR.OPENWEATHERMAP,
+          TEXTS.MESSAGE_ERRORS.AEMET_OPEN_DATA,
         );
       },
     );

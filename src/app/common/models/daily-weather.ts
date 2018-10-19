@@ -1,5 +1,5 @@
 export class DailyWeather {
-  id: Number;
+  id: number;
   municipioName: string;
   provinciaName: string;
   reportDate: string;
@@ -8,7 +8,7 @@ export class DailyWeather {
 
 export class Prediction {
   date: string;
-  uvMax: Number;
+  uvMax: number;
   relativeHumidity: MaxMin;
   thermalSensation: MaxMin;
   temperature: MaxMin;
@@ -18,8 +18,8 @@ export class Prediction {
 }
 
 export class MaxMin {
-  max: Number;
-  min: Number;
+  max: number;
+  min: number;
 }
 
 export class PeriodValues {
@@ -30,6 +30,6 @@ export class PeriodValues {
 
 export class WindValues {
   direction: string;
-  speed: Number;
+  speed: number;
   period: string;
 }

@@ -1,0 +1,7 @@
+<app-modal-header title="{{ title }}"></app-modal-header>
+<div class="modal-body">
+  <p *ngFor="let message of messagesInfo">
+    {{ message }}
+  </p>
+</div>
+<app-modal-footer label="{{ texts.LABELS.CLOSE }}"></app-modal-footer>

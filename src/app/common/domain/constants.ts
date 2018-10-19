@@ -10,7 +10,14 @@ export const CARD_INFO = {
   HUMIDITY_AIR: 3,
 };
 
-export const MESSAGE_ERROR = {
-  CARD_INFO: 'Unavailable Raspberry data',
-  OPENWEATHERMAP: 'Unavailable OpenWeatherMapData',
+export const SETTINGS_OPTIONS = {
+  MANUAL: {
+    ID: 0,
+  },
+  AUTO_HOURS: {
+    ID: 1,
+  },
+  AUTO_HUMIDITY: {
+    ID: 2,
+  },
 };

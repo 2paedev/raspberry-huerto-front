@@ -2,6 +2,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { getLimitsHumidityValues, getLimitsTemperatureValues } from '../../helpers/config-values';
 import { LimitsHumidity, LimitsTemperature } from '../../models/limits-values-card-info';
 import { SYMBOLS } from '../../domain/constants';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PanelInfoModalComponent } from '../modals/panel-info-modal/panel-info-modal.component';
+import { TEXTS } from '../../domain/texts';
+
+const OPTIONS_PANEL_INFO_MODAL = {
+  windowClass: 'card-info-panel-modal',
+  backdrop: 'static' as 'static',
+  keyboard: false,
+};
 
 @Component({
   selector: 'app-card-info',
@@ -19,6 +28,10 @@ export class CardInfoComponent implements OnInit {
   symbol: string;
   @Input()
   numberInfo: string;
+  @Input()
+  panelMessage: string[];
+  @Input()
+  panelTitle: string;
 
   @Output()
   callbackStats = new EventEmitter();
@@ -26,13 +39,20 @@ export class CardInfoComponent implements OnInit {
   maximumMinimumHumidityValues: LimitsHumidity;
   maximumMinimumTemperatureValues: LimitsTemperature;
   isSymbolTemperature: boolean;
+  panelInfoModal: any;
+  texts: any;
 
-  constructor() {}
+  constructor(private serviceModal: NgbModal) {}
 
   ngOnInit() {
+    this.init();
+  }
+
+  init() {
     this.maximumMinimumHumidityValues = getLimitsHumidityValues();
     this.maximumMinimumTemperatureValues = getLimitsTemperatureValues();
     this.isSymbolTemperature = this.symbol === SYMBOLS.TEMPERATURE;
+    this.texts = TEXTS;
   }
 
   goToStats() {
@@ -76,5 +96,12 @@ export class CardInfoComponent implements OnInit {
         numberInfo > this.maximumMinimumHumidityValues.minWarningHumidity &&
         numberInfo <= this.maximumMinimumHumidityValues.maxWarningHumidity,
     };
+  }
+
+  openPanelInfoModal() {
+    this.panelInfoModal = this.serviceModal.open(PanelInfoModalComponent, OPTIONS_PANEL_INFO_MODAL);
+    // tslint:disable-next-line:max-line-length
+    this.panelInfoModal.componentInstance.messagesInfo = this.panelMessage;
+    this.panelInfoModal.componentInstance.title = this.panelTitle;
   }
 }

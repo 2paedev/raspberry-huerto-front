@@ -4,15 +4,17 @@
        (click)="openCityInfoModal()">
     <i class="icon-home"
        aria-hidden="true"></i>
-    <span class="title">
+    <span class="title"
+          (click)="openPanelInfoModal()">
       {{ title }}
     </span>
   </div>
 
   <div class="cards-section"
        *ngIf="dailyPredictionData">
-    <app-card-weather-forecast *ngFor="let predictionData of dailyPredictionData.prediction"
-                               [predictionData]="predictionData"></app-card-weather-forecast>
+    <app-card-weather-forecast *ngFor="let predictionData of dailyPredictionData.prediction;let dayIndex = index;"
+                               [predictionData]="predictionData"
+                               (click)="openPredictionDataModal(dayIndex)"></app-card-weather-forecast>
   </div>
 
 </div>

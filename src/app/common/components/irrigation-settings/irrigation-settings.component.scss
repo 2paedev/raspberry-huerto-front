@@ -1,0 +1,70 @@
+@import '~src/assets/sass/main';
+
+:host {
+  .title-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      margin-top: 10px;
+      font-size: 20px;
+      color: $color-white-default;
+    }
+    .title {
+      margin-left: 5px;
+      font-size: 12px;
+      border-bottom: 1px solid $color-white-default;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .options-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+
+    .option {
+      width: 100%;
+      margin: 0 20px;
+
+      span {
+        cursor: pointer;
+      }
+
+      &.actived {
+        color: $color-green-default;
+      }
+      &.disabled {
+        color: $color-disabled-default;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+
+      .option {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .adjustments-section {
+    margin: 20px 0;
+    height: 200px;
+    border: 2px solid $color-blue-primary;
+    font-size: 16px;
+
+    .title {
+      font-size: 22px;
+    }
+    div {
+      color: red;
+    }
+  }
+}
