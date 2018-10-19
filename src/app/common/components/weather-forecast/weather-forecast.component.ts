@@ -75,18 +75,9 @@ export class WeatherForecastComponent implements OnInit {
       OPTIONS_DETAIL_INFO_MODAL,
     );
     // tslint:disable-next-line:max-line-length
-    this.modals.predictionDataModal.componentInstance.predictionData = this.detailInfoModalFormatter.formatDetailPredictionData(
+    this.modals.predictionDataModal.componentInstance.infoData = this.detailInfoModalFormatter.formatDetailPredictionData(
       this.dailyPredictionData.prediction[dayIndex],
     );
     this.modals.predictionDataModal.componentInstance.title = TEXTS.PREDICTION_DATA_MODAL_TITLE;
-  }
-
-  openPanelInfoModal() {
-    this.modals.panelInfo = this.serviceModal.open(
-      PanelInfoModalComponent,
-      OPTIONS_PANEL_INFO_MODAL,
-    );
-    this.modals.panelInfo.componentInstance.messagesInfo = ['Test Message 1', 'Test Message 2'];
-    this.modals.panelInfo.componentInstance.title = TEXTS.PANEL_INFO_MODAL_TITLE.WEATHER_FORECAST;
   }
 }

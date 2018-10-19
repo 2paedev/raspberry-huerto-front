@@ -21,3 +21,30 @@ export const SETTINGS_OPTIONS = {
     ID: 2,
   },
 };
+
+export const SKY_WEATHER = {
+  CLOUDY: {
+    DESCRIPTION: 'Nuboso',
+    ICON: 'assets/icons/nature-icons/cloud.svg',
+  },
+  CLOUDY_LIGHT_RAIN: {
+    DESCRIPTION: 'Nuboso con lluvia escasa',
+    ICON: 'assets/icons/nature-icons/rain.svg',
+  },
+  CLOUDY_INTERVALS: {
+    DESCRIPTION: 'Intervalos nubosos',
+    ICON: 'assets/icons/nature-icons/cloudy.svg',
+  },
+  CLOUDY_INTERVALS_RAIN: {
+    DESCRIPTION: 'Intervalos nubosos con lluvia',
+    ICON: 'assets/icons/nature-icons/rain-1.svg',
+  },
+  CLOUDY_INTERVALS_LIGHT_RAIN: {
+    DESCRIPTION: 'Intervalos nubosos con lluvia escasa',
+    ICON: 'assets/icons/nature-icons/rain-1.svg',
+  },
+  CLEAR: {
+    DESCRIPTION: 'Despejado',
+    ICON: 'assets/icons/nature-icons/sun.svg',
+  },
+};

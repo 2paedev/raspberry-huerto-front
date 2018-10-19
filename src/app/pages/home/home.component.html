@@ -15,25 +15,25 @@
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
          *ngIf="!error.inCardInfo">
-      <app-card-info title="texts.CARD_INFO.TITLE.TEMPERATURE_AIR"
+      <app-card-info title="{{ texts.CARD_INFO.TITLE.TEMPERATURE_AIR }}"
                      iconTitle="icon-thermometer"
                      [identificator]="cardInfoIds.TEMPERATURE_AIR"
                      [symbol]="symbols.TEMPERATURE"
                      [numberInfo]="cardInfoValues.temperatureAir"
                      (callbackStats)="goToCardStats($event)"
                      [panelMessage]="cardInfoPanelMessage.temperatureAir"
-                     panelTitle="texts.CARD_INFO.TITLE.TEMPERATURE_AIR"></app-card-info>
+                     panelTitle="{{ texts.CARD_INFO.TITLE.TEMPERATURE_AIR }}"></app-card-info>
     </div>
     <div class="card-info-wrapper col-xs-12 col-md-4"
          *ngIf="!error.inCardInfo">
-      <app-card-info title="texts.CARD_INFO.TITLE.HUMIDITY_AIR"
+      <app-card-info title="{{ texts.CARD_INFO.TITLE.HUMIDITY_AIR }}"
                      iconTitle="icon-humidity-env"
                      [identificator]="cardInfoIds.HUMIDITY_AIR"
                      [symbol]="symbols.HUMIDITY"
                      [numberInfo]="cardInfoValues.humidityAir"
                      (callbackStats)="goToCardStats($event)"
                      [panelMessage]="cardInfoPanelMessage.humidityAir"
-                     panelTitle="texts.CARD_INFO.TITLE.HUMIDITY_AIR"></app-card-info>
+                     panelTitle="{{ texts.CARD_INFO.TITLE.HUMIDITY_AIR }}"></app-card-info>
     </div>
     <div class="col"
          *ngIf="error.inCardInfo">

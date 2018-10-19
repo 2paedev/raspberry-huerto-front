@@ -1,10 +1,8 @@
 <section class="card-wf-wrapper">
   <span>{{ predictionData.date }}</span>
-  <img src="assets/icons/nature-icons/043-sun.svg">
-  <span>ºC Max: {{ predictionData.temperature.max }}</span>
-  <span>ºC Min: {{ predictionData.temperature.min }}</span>
-  <span>ºC S. Max: {{ predictionData.thermalSensation.max }}</span>
-  <span>ºC S. Min: {{ predictionData.thermalSensation.min }}</span>
-  <span>% Max: {{ predictionData.relativeHumidity.max }}</span>
-  <span>% Min: {{ predictionData.relativeHumidity.min }}</span>
+  <img src="{{ iconWeather }}">
+  <div class="data-section">
+    <span>ºC: {{ predictionData.temperature.max }}/{{ predictionData.temperature.min }}</span>
+    <span>%: {{ predictionData.relativeHumidity.max }}/{{ predictionData.relativeHumidity.min }}</span>
+  </div>
 </section>

@@ -2,7 +2,6 @@ export const TEXTS = {
   PANEL_INFO_MODAL_TITLE: {
     CAMERA_ZONE: 'Camera info',
     IRRIGATION_SETTINGS: 'Irrigation settings info',
-    WEATHER_FORECAST: 'Weather forecast info',
   },
   CARD_INFO: {
     TITLE: {
@@ -25,11 +24,6 @@ export const TEXTS = {
       AUTO_HOURS: 'Automatic by hours',
       AUTO_HUMIDITY: 'Automatic by humidity',
     },
-    // TITLE_ADJUSTMENTS: {
-    //   MANUAL: 'Manual',
-    //   AUTO_HOURS: 'Automatic by hours',
-    //   AUTO_HUMIDITY: 'Automatic by humidity',
-    // }
   },
   LOADINGS_TEXTS: {
     SPINNER: 'Loading...',
@@ -45,9 +39,12 @@ export const TEXTS = {
     ALTITUDE: 'Altitude',
     RESIDENTS_NUMBER: 'Residents number',
     DATE: 'Date',
-    UV_MAX: 'uvMax',
-    WIND_MAX: 'Wind Max',
-    WIND_MIN: 'Wind Min',
+    PRECIPITATION_PROBABILITY: 'Precipitation probability',
+    UV_MAX: 'UV max',
+    WIND_MAX: 'Wind max',
+    WIND_MIN: 'Wind min',
+    THERMAL_SENSATION_MAX: 'Thermal sensation max',
+    THERMAL_SENSATION_MIN: 'Thermal sensation min',
   },
   MESSAGE_ERRORS: {
     CARD_INFO: 'Unavailable Raspberry data',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { City } from 'src/app/common/models/city';
 import { formatToMeter } from 'src/app/common/helpers/symbols';
-import { Prediction, WindValues } from '../models/daily-weather';
+import { Prediction, WindValues, PeriodValues } from '../models/daily-weather';
 import { TEXTS } from '../domain/texts';
 
 @Injectable({
@@ -47,14 +47,14 @@ export class DetailInfoModalFormatter {
     });
 
     dataFormatted.push({
+      label: TEXTS.LABELS.PRECIPITATION_PROBABILITY,
+      text: this.getPrecipitationProb(data.precipitationProbability),
+    });
+
+    dataFormatted.push({
       label: TEXTS.LABELS.UV_MAX,
       text: data.uvMax,
     });
-
-    // dataFormatted.push({
-    //   label: 'Sky',
-    //   text: data.sky,
-    // });
 
     dataFormatted.push({
       label: TEXTS.LABELS.WIND_MAX,
@@ -64,6 +64,16 @@ export class DetailInfoModalFormatter {
     dataFormatted.push({
       label: TEXTS.LABELS.WIND_MIN,
       text: wind.min,
+    });
+
+    dataFormatted.push({
+      label: TEXTS.LABELS.THERMAL_SENSATION_MAX,
+      text: data.thermalSensation.max,
+    });
+
+    dataFormatted.push({
+      label: TEXTS.LABELS.THERMAL_SENSATION_MAX,
+      text: data.thermalSensation.min,
     });
 
     return dataFormatted;
@@ -83,5 +93,17 @@ export class DetailInfoModalFormatter {
       }
     });
     return wind;
+  }
+
+  getPrecipitationProb(data: PeriodValues[]) {
+    let probability = 0;
+    data.forEach((period) => {
+      // tslint:disable-next-line:radix
+      const periodValue = parseInt(period.value);
+      if (periodValue > probability) {
+        probability = periodValue;
+      }
+    });
+    return probability;
   }
 }

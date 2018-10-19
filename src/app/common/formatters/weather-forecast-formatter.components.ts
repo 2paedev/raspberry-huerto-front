@@ -8,6 +8,7 @@ import {
   WindValues,
 } from '../models/daily-weather';
 import { ValueTransformer } from '@angular/compiler/src/util';
+import { isUndefinedOrNullOrEmpty } from '../helpers/common';
 
 @Injectable({
   providedIn: 'root',
@@ -72,6 +73,9 @@ export class WeatherForecastFormatter {
         value: period.value,
         hoursDayPeriod: period.periodo,
       };
+      if (!isUndefinedOrNullOrEmpty(period.descripcion)) {
+        periodValue['description'] = period.descripcion;
+      }
       dataFormatted.push(periodValue);
     });
     return dataFormatted;
