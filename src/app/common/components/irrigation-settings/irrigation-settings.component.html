@@ -1,49 +1,64 @@
 <div class="irrigation-wrapper">
-  <div class="title-section">
-    <i class="icon-settings"
-       aria-hidden="true"></i>
-    <span class="title"
-          (click)="openPanelInfoModal()">
-      {{ title }}
-    </span>
+  <div *ngIf="!existsErrors()">
+    <div class="title-section">
+      <i class="icon-settings"
+         aria-hidden="true"></i>
+      <span class="title"
+            (click)="openPanelInfoModal()">
+        {{ title }}
+      </span>
+    </div>
+
+    <div class="current-section">
+      <span>State current setting</span>
+      <span class="state">{{ currentState }}</span>
+    </div>
+
+    <div class="options-section">
+      <div class="option actived"
+           [ngClass]="getClass(settingsOptions.MANUAL.ID)"
+           (click)="selectOption(settingsOptions.MANUAL.ID)">
+        <span>{{ texts.SETTINGS_OPTIONS.MANUAL.TITLE }}</span>
+      </div>
+      <div class="option disabled"
+           [ngClass]="getClass(settingsOptions.AUTO_HOURS.ID)"
+           (click)="selectOption(settingsOptions.AUTO_HOURS.ID)">
+        <span>{{ texts.SETTINGS_OPTIONS.AUTO_HOURS.TITLE }}</span>
+      </div>
+      <div class="option disabled"
+           [ngClass]="getClass(settingsOptions.AUTO_HUMIDITY.ID)"
+           (click)="selectOption(settingsOptions.AUTO_HUMIDITY.ID)">
+        <span>{{ texts.SETTINGS_OPTIONS.AUTO_HUMIDITY.TITLE }}</span>
+      </div>
+    </div>
+
+    <div class="adjustments-section">
+      <div *ngIf="optionSelected === settingsOptions.MANUAL.ID"
+           class="manual-block">
+        <span *ngIf="!errorInManual"
+              class="description">Toggle the button for activate/deactivate irrigation</span>
+        <app-toggle-button *ngIf="!errorInManual"
+                           labelOff="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.OFF }}"
+                           labelOn="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.ON }}"
+                           (value)="setManualConfiguration($event)"
+                           [defaultValue]="currentSettings.value"></app-toggle-button>
+        <app-panel-error *ngIf="errorInManual"
+                         message="{{ messageError }}"></app-panel-error>
+      </div>
+
+      <div *ngIf="optionSelected === settingsOptions.AUTO_HOURS.ID">
+        <div>Hora comienzo</div>
+        <div>Frecuencia(Horas)</div>
+        <div>Tiempo(Minutos)</div>
+        <div>Botón Enviar Configuracion</div>
+      </div>
+
+      <div *ngIf="optionSelected === settingsOptions.AUTO_HUMIDITY.ID">
+        <div>Humedad:Valor mínimo para activar(%)</div>
+        <div>Botón Enviar Configuracion</div>
+      </div>
+    </div>
   </div>
-
-  <div class="options-section">
-    <div class="option actived"
-         [ngClass]="getClass(settingsOptions.MANUAL.ID)"
-         (click)="selectOption(settingsOptions.MANUAL.ID)">
-      <span>{{ texts.SETTINGS_OPTIONS.TITLE.MANUAL }}</span>
-    </div>
-    <div class="option disabled"
-         [ngClass]="getClass(settingsOptions.AUTO_HOURS.ID)"
-         (click)="selectOption(settingsOptions.AUTO_HOURS.ID)">
-      <span>{{ texts.SETTINGS_OPTIONS.TITLE.AUTO_HOURS }}</span>
-    </div>
-    <div class="option disabled"
-         [ngClass]="getClass(settingsOptions.AUTO_HUMIDITY.ID)"
-         (click)="selectOption(settingsOptions.AUTO_HUMIDITY.ID)">
-      <span>{{ texts.SETTINGS_OPTIONS.TITLE.AUTO_HUMIDITY }}</span>
-    </div>
-  </div>
-
-  <div class="adjustments-section">
-    <div *ngIf="optionSelected === settingsOptions.MANUAL.ID">
-      <div>Estado actual del riego(Activado/Desactivado)</div>
-      <div>Toggle button según el estado actual (Activar/Desactivar)</div>
-    </div>
-
-    <div *ngIf="optionSelected === settingsOptions.AUTO_HOURS.ID">
-      <div>Estado actual del riego(Activado/Desactivado)</div>
-      <div>Hora comienzo</div>
-      <div>Frecuencia(Horas)</div>
-      <div>Tiempo(Minutos)</div>
-      <div>Botón Enviar Configuracion</div>
-    </div>
-
-    <div *ngIf="optionSelected === settingsOptions.AUTO_HUMIDITY.ID">
-      <div>Estado actual del riego(Activado/Desactivado)</div>
-      <div>Humedad:Valor mínimo para activar(%)</div>
-      <div>Botón Enviar Configuracion</div>
-    </div>
-  </div>
+  <app-panel-error *ngIf="existsErrors()"
+                   message="{{ messageError }}"></app-panel-error>
 </div>

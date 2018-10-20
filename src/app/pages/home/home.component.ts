@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
       (response) => {
         this.showingSpinner = false;
         this.error.inCardInfo = false;
-        this.setCardInfoValues(response);
+        this.setCardInfoValues(response[response.length - 1]);
       },
       (error) => {
         this.showingSpinner = false;
@@ -123,7 +123,6 @@ export class HomeComponent implements OnInit {
         this.error.inWeatherForecast = false;
         this.dataWeatherForecastLoaded = true;
         this.httpClient.get<any>(response.datos, {}).subscribe((predictionData) => {
-          console.log(predictionData);
           this.weatherDailyPredictionData = this.weatherForecastFormatter.formatPredictionDailyData(
             predictionData[0],
           );
@@ -138,6 +137,10 @@ export class HomeComponent implements OnInit {
         );
       },
     );
+  }
+
+  showLoadingSpinner(event) {
+    this.showingSpinner = event;
   }
 
   setCardInfoValues(data) {

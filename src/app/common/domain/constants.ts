@@ -13,6 +13,10 @@ export const CARD_INFO = {
 export const SETTINGS_OPTIONS = {
   MANUAL: {
     ID: 0,
+    VALUES: {
+      OFF: 0,
+      ON: 1,
+    },
   },
   AUTO_HOURS: {
     ID: 1,

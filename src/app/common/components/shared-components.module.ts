@@ -14,6 +14,7 @@ import { CardWeatherForecastComponent } from './card-weather-forecast/card-weath
 import { PanelInfoModalComponent } from './modals/panel-info-modal/panel-info-modal.component';
 import { ModalHeaderComponent } from './modals/modal-header/modal-header.component';
 import { ModalFooterComponent } from './modals/modal-footer/modal-footer.component';
+import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -30,6 +31,7 @@ import { ModalFooterComponent } from './modals/modal-footer/modal-footer.compone
     PanelInfoModalComponent,
     ModalHeaderComponent,
     ModalFooterComponent,
+    ToggleButtonComponent,
   ],
   exports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { ModalFooterComponent } from './modals/modal-footer/modal-footer.compone
     PanelInfoModalComponent,
     ModalHeaderComponent,
     ModalFooterComponent,
+    ToggleButtonComponent,
   ],
   entryComponents: [DetailInfoModalComponent, PanelInfoModalComponent],
 })

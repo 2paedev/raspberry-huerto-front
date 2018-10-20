@@ -2,8 +2,10 @@ var f = require('faker');
 var config = require('../config');
 
 module.exports = {
-  path: '/wheather/site/all',
+  path: '/api/wheather/site/all',
   cache: false,
+  collection: true,
+  size: 10,
   status: function(req, res, next) {
     if (config.randomErrors) {
       var number = f.random.number(10);

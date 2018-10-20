@@ -60,7 +60,8 @@
   <hr>
   <div class="row">
     <div class="col">
-      <app-irrigation-settings title="{{ texts.IRRIGATION_SETTINGS.TITLE }}"></app-irrigation-settings>
+      <app-irrigation-settings title="{{ texts.IRRIGATION_SETTINGS.TITLE }}"
+                               (showLoading)="showLoadingSpinner($event)"></app-irrigation-settings>
     </div>
   </div>
   <hr>

@@ -13,9 +13,12 @@ $yellow300: nth($app-yellow, 1);
 $app-white: #fffcd9;
 $white300: nth($app-white, 1);
 
-$app-blue: #2533b3, #1d203b;
-$blue300: nth($app-blue, 1);
-$blue800: nth($app-blue, 2);
+$app-blue: #3898ff, #007bff, #2533b3, #10122a;
+$blue75: nth($app-blue, 1);
+$blue100: nth($app-blue, 2);
+$blue300: nth($app-blue, 3);
+$blue800: nth($app-blue, 4);
 
-$app-grey: #525252;
-$grey400: nth($app-grey, 1);
+$app-grey: #929292, #525252;
+$grey200: nth($app-grey, 1);
+$grey400: nth($app-grey, 2);

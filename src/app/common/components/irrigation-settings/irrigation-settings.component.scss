@@ -1,6 +1,26 @@
 @import '~src/assets/sass/main';
 
 :host {
+  .current-section {
+    font-size: 10px;
+    border: 2px solid $color-white-default;
+    border-radius: 4px;
+    width: 50%;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-top: 5px;
+    }
+
+    .state {
+      font-size: 22px;
+      margin-bottom: 5px;
+      color: $color-blue-secondary;
+    }
+  }
+
   .title-section {
     display: flex;
     flex-direction: row;
@@ -38,7 +58,11 @@
       }
 
       &.actived {
-        color: $color-green-default;
+        color: $color-blue-primary;
+
+        &:hover {
+          color: $color-blue-secondary;
+        }
       }
       &.disabled {
         color: $color-disabled-default;
@@ -56,15 +80,32 @@
 
   .adjustments-section {
     margin: 20px 0;
-    height: 200px;
-    border: 2px solid $color-blue-primary;
+    height: 150px;
+    border: 2px solid $color-blue-default;
+    border-radius: 4px;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .title {
       font-size: 22px;
     }
-    div {
-      color: red;
+
+    .manual-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 12px;
+      }
+
+      app-panel-error {
+        margin-top: 8px;
+      }
     }
   }
 }

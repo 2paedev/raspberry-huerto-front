@@ -1,11 +1,11 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-custom-button',
   templateUrl: './custom-buttom.component.html',
   styleUrls: ['./custom-buttom.component.scss'],
 })
-export class CustomButtomComponent implements OnInit {
+export class CustomButtomComponent {
   @Input()
   icon: string;
   @Input()
@@ -14,8 +14,6 @@ export class CustomButtomComponent implements OnInit {
   action = new EventEmitter();
 
   constructor() {}
-
-  ngOnInit() {}
 
   callbackAction() {
     this.action.emit();
