@@ -1,18 +1,12 @@
-<div class="card-info-wrapper"
-     [ngClass]="setColor()">
+<div class="card-info-wrapper" [ngClass]="setColor()">
   <div class="title-section">
-    <i class="{{iconTitle}}"
-       aria-hidden="true"></i>
-    <span class="title"
-          (click)="openPanelInfoModal()">
+    <i class="{{iconTitle}}" aria-hidden="true"></i>
+    <span class="title" (click)="openPanelInfoModal()">
       {{ title }}
     </span>
   </div>
-  <div class="info-section"
-       [ngClass]="setColor()">
+  <div class="info-section" [ngClass]="setColor()">
     <span class="number">{{ numberInfo }}</span><span class="symbol">{{ symbol }}</span>
   </div>
-  <app-custom-button (action)="goToStats($event)"
-                     icon="icon-chart"
-                     label="{{ texts.LABELS.STATS }}"></app-custom-button>
+  <app-custom-button (action)="goToStats()" icon="icon-chart" label="{{ texts.LABELS.STATS }}"></app-custom-button>
 </div>

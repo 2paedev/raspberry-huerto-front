@@ -2,9 +2,9 @@ var f = require('faker');
 var config = require('../config');
 
 module.exports = {
-  path: '/api/wheather/site/all',
+  path: '/api/weather/site/all',
   cache: false,
-  collection: true,
+  collection: false,
   size: 10,
   status: function(req, res, next) {
     if (config.randomErrors) {
@@ -12,7 +12,7 @@ module.exports = {
       if (number == 0) {
         res.status(400).send({
           status_code: 400,
-          error_message: 'Unavailable data site wheather'
+          error_message: 'Unavailable data site weather'
         });
       } else {
         next();

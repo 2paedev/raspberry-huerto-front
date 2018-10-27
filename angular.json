@@ -43,6 +43,30 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "local-mocks": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local-mocks.ts"
+                }
+              ]
+            },
+            "local-back": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local-back.ts"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -54,6 +78,15 @@
           "configurations": {
             "production": {
               "browserTarget": "raspberry-huerto-front:build:production"
+            },
+            "local-mocks": {
+              "browserTarget": "raspberry-huerto-front:build:local-mocks"
+            },
+            "local-back": {
+              "browserTarget": "raspberry-huerto-front:build:local-back"
+            },
+            "dev": {
+              "browserTarget": "raspberry-huerto-front:build:dev"
             }
           }
         },
