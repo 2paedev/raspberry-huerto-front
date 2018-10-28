@@ -1,10 +1,8 @@
 <div class="irrigation-wrapper">
   <div *ngIf="!existsErrors()">
     <div class="title-section">
-      <i class="icon-settings"
-         aria-hidden="true"></i>
-      <span class="title"
-            (click)="openPanelInfoModal()">
+      <i class="icon-settings" aria-hidden="true"></i>
+      <span class="title" (click)="openPanelInfoModal()">
         {{ title }}
       </span>
     </div>
@@ -15,35 +13,23 @@
     </div>
 
     <div class="options-section">
-      <div class="option actived"
-           [ngClass]="getClass(settingsOptions.MANUAL.ID)"
-           (click)="selectOption(settingsOptions.MANUAL.ID)">
+      <div class="option actived" [ngClass]="getClass(settingsOptions.MANUAL.ID)" (click)="selectOption(settingsOptions.MANUAL.ID)">
         <span>{{ texts.SETTINGS_OPTIONS.MANUAL.TITLE }}</span>
       </div>
-      <div class="option disabled"
-           [ngClass]="getClass(settingsOptions.AUTO_HOURS.ID)"
-           (click)="selectOption(settingsOptions.AUTO_HOURS.ID)">
+      <div class="option disabled" [ngClass]="getClass(settingsOptions.AUTO_HOURS.ID)" (click)="selectOption(settingsOptions.AUTO_HOURS.ID)">
         <span>{{ texts.SETTINGS_OPTIONS.AUTO_HOURS.TITLE }}</span>
       </div>
-      <div class="option disabled"
-           [ngClass]="getClass(settingsOptions.AUTO_HUMIDITY.ID)"
-           (click)="selectOption(settingsOptions.AUTO_HUMIDITY.ID)">
+      <div class="option disabled" [ngClass]="getClass(settingsOptions.AUTO_HUMIDITY.ID)" (click)="selectOption(settingsOptions.AUTO_HUMIDITY.ID)">
         <span>{{ texts.SETTINGS_OPTIONS.AUTO_HUMIDITY.TITLE }}</span>
       </div>
     </div>
 
     <div class="adjustments-section">
-      <div *ngIf="optionSelected === settingsOptions.MANUAL.ID"
-           class="manual-block">
-        <span *ngIf="!errorInManual"
-              class="description">Toggle the button for activate/deactivate irrigation</span>
-        <app-toggle-button *ngIf="!errorInManual"
-                           labelOff="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.OFF }}"
-                           labelOn="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.ON }}"
-                           (value)="setManualConfiguration($event)"
-                           [defaultValue]="currentSettings.value"></app-toggle-button>
-        <app-panel-error *ngIf="errorInManual"
-                         message="{{ messageError }}"></app-panel-error>
+      <div *ngIf="optionSelected === settingsOptions.MANUAL.ID" class="manual-block">
+        <span *ngIf="!errorInManual" class="description">Toggle the button for activate/deactivate irrigation</span>
+        <app-toggle-button *ngIf="!errorInManual" labelOff="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.OFF }}" labelOn="{{ texts.SETTINGS_OPTIONS.MANUAL.VALUE_TEXT.ON }}"
+          (value)="setNewConfiguration($event)" [defaultValue]="currentSettings.settingValue"></app-toggle-button>
+        <app-panel-error *ngIf="errorInManual" message="{{ messageError }}"></app-panel-error>
       </div>
 
       <div *ngIf="optionSelected === settingsOptions.AUTO_HOURS.ID">
@@ -59,6 +45,5 @@
       </div>
     </div>
   </div>
-  <app-panel-error *ngIf="existsErrors()"
-                   message="{{ messageError }}"></app-panel-error>
+  <app-panel-error *ngIf="existsErrors()" message="{{ messageError }}"></app-panel-error>
 </div>

@@ -2,7 +2,7 @@ var f = require('faker');
 var config = require('../config');
 
 module.exports = {
-  path: '/settings/auto/humidity',
+  path: '/api/settings/current',
   method: 'POST',
   collection: false,
   status: function(req, res, next) {
@@ -11,7 +11,7 @@ module.exports = {
       if (number == 0) {
         res.status(400).send({
           status_code: 400,
-          error_message: 'Error in auto by humidity settings'
+          error_message: 'Error when set settings'
         });
       } else {
         next();

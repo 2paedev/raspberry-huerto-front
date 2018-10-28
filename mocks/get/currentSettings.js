@@ -18,7 +18,7 @@ const SETTINGS = {
 };
 
 module.exports = {
-  path: '/settings/current',
+  path: '/api/settings/current',
   cache: false,
   status(req, res, next) {
     if (config.randomErrors) {

@@ -1,24 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SETTINGS_OPTIONS } from '../../domain/constants';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PanelInfoModalComponent } from '../modals/panel-info-modal/panel-info-modal.component';
-import { TEXTS } from '../../domain/texts';
-import { SettingsService } from '../../domain/api/settings.service';
-import { formatMessageError } from '../../helpers/errors';
-import { SettingsInfo } from '../../models/settings-info';
-import { getSettingsOptionsTitle, getSettingsValueText } from '../../helpers/common';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { SETTINGS_OPTIONS } from "../../domain/constants";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { PanelInfoModalComponent } from "../modals/panel-info-modal/panel-info-modal.component";
+import { TEXTS } from "../../domain/texts";
+import { SettingsService } from "../../domain/api/settings.service";
+import { formatMessageError } from "../../helpers/errors";
+import { SettingsInfo } from "../../models/settings-info";
+import {
+  getSettingsOptionsTitle,
+  getSettingsValueText
+} from "../../helpers/common";
 
 const OPTIONS_PANEL_INFO_MODAL = {
-  windowClass: 'irrigation-panel-info-modal',
-  backdrop: 'static' as 'static',
-  keyboard: false,
+  windowClass: "irrigation-panel-info-modal",
+  backdrop: "static" as "static",
+  keyboard: false
 };
 
 @Component({
-  selector: 'app-irrigation-settings',
-  templateUrl: './irrigation-settings.component.html',
-  styleUrls: ['./irrigation-settings.component.scss'],
-  providers: [SettingsService],
+  selector: "app-irrigation-settings",
+  templateUrl: "./irrigation-settings.component.html",
+  styleUrls: ["./irrigation-settings.component.scss"],
+  providers: [SettingsService]
 })
 export class IrrigationSettingsComponent implements OnInit {
   @Input()
@@ -37,7 +40,10 @@ export class IrrigationSettingsComponent implements OnInit {
   errorInCurrentSettingsInfo: boolean;
   errorInManual: boolean;
 
-  constructor(private serviceModal: NgbModal, private settingsApi: SettingsService) {}
+  constructor(
+    private serviceModal: NgbModal,
+    private settingsApi: SettingsService
+  ) {}
 
   ngOnInit() {
     this.init();
@@ -56,34 +62,44 @@ export class IrrigationSettingsComponent implements OnInit {
     this.selectOption(SETTINGS_OPTIONS.MANUAL.ID);
     this.currentSettings = {
       settingId: 0,
-      value: 0,
+      settingValue: 0
     };
   }
 
   getCurrentSettingsInfo() {
     this.settingsApi.getCurrentSettingsInfo({}).subscribe(
-      (response) => {
+      response => {
         this.errorInCurrentSettingsInfo = false;
         this.currentSettings = response;
         this.currentState = this.formatCurrentState(response);
       },
-      (error) => {
+      error => {
         this.errorInCurrentSettingsInfo = true;
-        this.messageError = formatMessageError(error, TEXTS.MESSAGE_ERRORS.CURRENT_SETTINGS);
-      },
+        this.messageError = formatMessageError(
+          error,
+          TEXTS.MESSAGE_ERRORS.CURRENT_SETTINGS
+        );
+      }
     );
   }
 
   formatCurrentState(data: SettingsInfo) {
     const settingTitle = getSettingsOptionsTitle(data.settingId);
-    const valueText = getSettingsValueText(data.value);
+    const valueText = getSettingsValueText(data.settingValue);
     return `${settingTitle} (${valueText})`;
   }
 
   openPanelInfoModal() {
-    this.panelInfoModal = this.serviceModal.open(PanelInfoModalComponent, OPTIONS_PANEL_INFO_MODAL);
-    this.panelInfoModal.componentInstance.messagesInfo = ['Test Message 1', 'Test Message 2'];
-    this.panelInfoModal.componentInstance.title = TEXTS.PANEL_INFO_MODAL_TITLE.IRRIGATION_SETTINGS;
+    this.panelInfoModal = this.serviceModal.open(
+      PanelInfoModalComponent,
+      OPTIONS_PANEL_INFO_MODAL
+    );
+    this.panelInfoModal.componentInstance.messagesInfo = [
+      "Test Message 1",
+      "Test Message 2"
+    ];
+    this.panelInfoModal.componentInstance.title =
+      TEXTS.PANEL_INFO_MODAL_TITLE.IRRIGATION_SETTINGS;
   }
 
   selectOption(optionId: number) {
@@ -94,45 +110,48 @@ export class IrrigationSettingsComponent implements OnInit {
   getClass(optionId) {
     return {
       actived: this.optionSelected === optionId,
-      disabled: this.optionSelected !== optionId,
+      disabled: this.optionSelected !== optionId
     };
   }
 
-  setManualConfiguration(dataCheckbox: boolean) {
+  setNewConfiguration(dataCheckbox: boolean) {
     this.showLoading.emit(true);
     this.errorInManual = false;
+    const currentSettingValue = this.formatResultChoice(dataCheckbox);
     const bodyParams = {
-      activate: dataCheckbox,
+      settingId: this.optionSelected,
+      settingValue: currentSettingValue
     };
 
-    this.settingsApi.setManualSettings(bodyParams).subscribe(
-      (response) => {
+    this.settingsApi.setCurrentSettingsInfo(bodyParams).subscribe(
+      response => {
         this.showLoading.emit(false);
         this.errorInManual = false;
-        const state = {
-          settingId: SETTINGS_OPTIONS.MANUAL.ID,
-          value: SETTINGS_OPTIONS.MANUAL.VALUES.OFF,
-        };
-        if (dataCheckbox) {
-          state['value'] = SETTINGS_OPTIONS.MANUAL.VALUES.ON;
-        }
-        this.currentState = this.formatCurrentState(state);
+        this.setCurrentSettingAndState(bodyParams);
       },
-      (error) => {
+      error => {
         this.showLoading.emit(false);
         this.errorInManual = true;
-        const state = {
-          settingId: SETTINGS_OPTIONS.MANUAL.ID,
-          value: SETTINGS_OPTIONS.MANUAL.VALUES.OFF,
-        };
-        if (!dataCheckbox) {
-          state['value'] = SETTINGS_OPTIONS.MANUAL.VALUES.ON;
-        }
-        this.messageError = formatMessageError(error, TEXTS.MESSAGE_ERRORS.MANUAL_SETTINGS);
-        this.currentState = this.formatCurrentState(state);
-        this.currentSettings.value = state.value;
-      },
+        this.messageError = formatMessageError(
+          error,
+          TEXTS.MESSAGE_ERRORS.MANUAL_SETTINGS
+        );
+        this.setCurrentSettingAndState(bodyParams);
+      }
     );
+  }
+
+  formatResultChoice(data: boolean) {
+    if (this.optionSelected === SETTINGS_OPTIONS.MANUAL.ID) {
+      return data === false
+        ? SETTINGS_OPTIONS.MANUAL.VALUES.OFF
+        : SETTINGS_OPTIONS.MANUAL.VALUES.ON;
+    }
+  }
+
+  setCurrentSettingAndState(settings: SettingsInfo) {
+    this.currentState = this.formatCurrentState(settings);
+    this.currentSettings = settings;
   }
 
   existsErrors() {

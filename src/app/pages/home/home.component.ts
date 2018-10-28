@@ -13,6 +13,7 @@ import { formatMessageError } from "src/app/common/helpers/errors";
 import { AemetPredictionService } from "src/app/common/domain/api/aemet/aemet-prediction.service";
 import { HttpClient } from "@angular/common/http";
 import { TEXTS } from "src/app/common/domain/texts";
+import { CardInfoValues } from "src/app/common/models/card-info-values";
 
 @Component({
   selector: "app-home",
@@ -22,11 +23,7 @@ import { TEXTS } from "src/app/common/domain/texts";
 })
 export class HomeComponent implements OnInit {
   symbols = SYMBOLS;
-  cardInfoValues = {
-    humidityAir: 0.0,
-    humidityGround: 0.0,
-    temperatureAir: 0.0
-  };
+  cardInfoValues: CardInfoValues;
   showingSpinner: boolean;
   dataWeatherForecastLoaded: boolean;
   error: any;
@@ -69,6 +66,12 @@ export class HomeComponent implements OnInit {
       inCardInfo: false,
       inWeatherForecast: false
     };
+    this.cardInfoValues = {
+      id: 0,
+      humidityAir: 0.0,
+      humidityGround: 0.0,
+      temperatureAir: 0.0
+    };
     this.messageError = {
       inCardInfo: "",
       inWeatherForecast: ""
@@ -85,7 +88,6 @@ export class HomeComponent implements OnInit {
     this.showingSpinner = true;
     this.cardInfoApi.getAllInfo({}).subscribe(
       response => {
-        debugger;
         this.showingSpinner = false;
         this.error.inCardInfo = false;
         this.setCardInfoValues(response);
@@ -152,6 +154,7 @@ export class HomeComponent implements OnInit {
   }
 
   setCardInfoValues(data) {
+    this.cardInfoValues.id = data.id;
     this.cardInfoValues.humidityAir = data.humidityAir;
     this.cardInfoValues.humidityGround = data.humidityGround;
     this.cardInfoValues.temperatureAir = data.temperatureAir;
