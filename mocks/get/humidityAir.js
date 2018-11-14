@@ -1,18 +1,19 @@
 var f = require('faker');
 var config = require('../config');
+var helper = require('../helper');
 
 module.exports = {
-  path: '/api/weather/last/all',
+  path: '/api/humidity/air',
   cache: false,
-  collection: false,
-  size: 10,
+  collection: true,
+  size: 300,
   status: function(req, res, next) {
     if (config.randomErrors) {
       var number = f.random.number(10);
       if (number == 0) {
         res.status(400).send({
           status_code: 400,
-          error_message: 'Unavailable data site weather'
+          error_message: 'Unavailable data humidity air'
         });
       } else {
         next();
@@ -23,8 +24,16 @@ module.exports = {
   },
   delay: config.delayGet,
   template: {
-    humidityAir: f.finance.amount(0, 100, 1),
-    humidityGround: f.finance.amount(0, 100, 1),
-    temperatureAir: f.finance.amount(-12, 42, 1)
+    created: function() {
+      return helper.formatDate(
+        f.date
+          .between('2016-01-01', '2018-12-31')
+          .toISOString()
+          .substring(0, 10)
+      );
+    },
+    value: function() {
+      return f.finance.amount(0, 100, 1);
+    }
   }
 };

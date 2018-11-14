@@ -1,8 +1,8 @@
 module.exports = {
-  // formatFecha: function(strDate) {
-  //   var arrayDate = strDate.split("-");
-  //   return arrayDate[2] + "/" + arrayDate[1] + "/" + arrayDate[0];
-  // },
+  formatDate: function(strDate) {
+    var arrayDate = strDate.split('-');
+    return arrayDate[2] + '/' + arrayDate[1] + '/' + arrayDate[0];
+  }
   // formatImporte: function(strImporte) {
   //   return formatNumero(Number(strImporte).toLocaleString("es-ES")) + " €";
   // },
