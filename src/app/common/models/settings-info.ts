@@ -1,4 +1,4 @@
 export class SettingsInfo {
   settingId: number;
-  settingValue: number;
+  value: number;
 }

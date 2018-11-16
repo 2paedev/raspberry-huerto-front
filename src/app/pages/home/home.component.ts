@@ -14,6 +14,8 @@ import { AemetPredictionService } from "src/app/common/domain/api/aemet/aemet-pr
 import { HttpClient } from "@angular/common/http";
 import { TEXTS } from "src/app/common/domain/texts";
 import { CardInfoValues } from "src/app/common/models/card-info-values";
+import { StatsTabs } from "src/app/common/services/stats-tabs.service";
+import { SpinnerService } from "src/app/common/services/spinner.service";
 
 @Component({
   selector: "app-home",
@@ -24,7 +26,6 @@ import { CardInfoValues } from "src/app/common/models/card-info-values";
 export class HomeComponent implements OnInit {
   symbols = SYMBOLS;
   cardInfoValues: CardInfoValues;
-  showingSpinner: boolean;
   dataWeatherForecastLoaded: boolean;
   error: any;
   messageError: any;
@@ -40,6 +41,8 @@ export class HomeComponent implements OnInit {
     private aemetMasterApi: AemetMasterService,
     private aemetPredictionApi: AemetPredictionService,
     private weatherForecastFormatter: WeatherForecastFormatter,
+    private statsTabs: StatsTabs,
+    private spinner: SpinnerService,
     private router: Router,
     private httpClient: HttpClient
   ) {}
@@ -60,7 +63,6 @@ export class HomeComponent implements OnInit {
   }
 
   initVariables() {
-    this.showingSpinner = false;
     this.dataWeatherForecastLoaded = false;
     this.error = {
       inCardInfo: false,
@@ -85,15 +87,15 @@ export class HomeComponent implements OnInit {
   }
 
   getAllCardInfo() {
-    this.showingSpinner = true;
-    this.cardInfoApi.getAllInfo({}).subscribe(
+    this.spinner.activate();
+    this.cardInfoApi.getAllInfo().subscribe(
       response => {
-        this.showingSpinner = false;
+        this.spinner.deactivate();
         this.error.inCardInfo = false;
         this.setCardInfoValues(response);
       },
       error => {
-        this.showingSpinner = false;
+        this.spinner.deactivate();
         this.error.inCardInfo = true;
         this.messageError.inCardInfo = formatMessageError(
           error,
@@ -149,10 +151,6 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  showLoadingSpinner(event) {
-    this.showingSpinner = event;
-  }
-
   setCardInfoValues(data) {
     this.cardInfoValues.id = data.id;
     this.cardInfoValues.humidityAir = data.humidityAir;
@@ -160,20 +158,8 @@ export class HomeComponent implements OnInit {
     this.cardInfoValues.temperatureAir = data.temperatureAir;
   }
 
-  goToCardStats(cardInfoId: Number) {
-    const routePathToGo = this.getStatsRoutePath(cardInfoId);
-    this.router.navigate([routePathToGo]);
-  }
-
-  getStatsRoutePath(id: Number) {
-    if (id === CARD_INFO.HUMIDITY_GROUND) {
-      return APP_ROUTES.HUMIDITY_GROUND_STATS;
-    }
-    if (id === CARD_INFO.TEMPERATURE_AIR) {
-      return APP_ROUTES.TEMPERATURE_AIR_STATS;
-    }
-    if (id === CARD_INFO.HUMIDITY_AIR) {
-      return APP_ROUTES.HUMIDITY_AIR_STATS;
-    }
+  goToCardStats(cardInfoId: number) {
+    this.statsTabs.current = cardInfoId;
+    this.router.navigate([APP_ROUTES.STATS]);
   }
 }

@@ -10,12 +10,12 @@ import { BasePost } from "../../models/base-post";
 export class SettingsService {
   protected readonly currentSettingsURL = URLS_API.SETTINGS.CURRENT;
 
-  constructor(private clientHttp: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  public getCurrentSettingsInfo(params: any): Observable<any> {
+  public getCurrentSettingsInfo(): Observable<any> {
     const queryParams = new HttpParams();
 
-    return this.clientHttp
+    return this.http
       .get<any>(this.currentSettingsURL, { params: queryParams })
       .pipe(
         tap(() => {}, () => {}),
@@ -32,7 +32,7 @@ export class SettingsService {
       params: queryParams
     };
     const bodyParams = params;
-    return this.clientHttp
+    return this.http
       .post<BasePost>(this.currentSettingsURL, bodyParams, httpOptions)
       .pipe(
         tap(() => {}, () => {}),

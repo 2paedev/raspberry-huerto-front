@@ -62,12 +62,12 @@ export class IrrigationSettingsComponent implements OnInit {
     this.selectOption(SETTINGS_OPTIONS.MANUAL.ID);
     this.currentSettings = {
       settingId: 0,
-      settingValue: 0
+      value: 0
     };
   }
 
   getCurrentSettingsInfo() {
-    this.settingsApi.getCurrentSettingsInfo({}).subscribe(
+    this.settingsApi.getCurrentSettingsInfo().subscribe(
       response => {
         this.errorInCurrentSettingsInfo = false;
         this.currentSettings = response;
@@ -85,7 +85,7 @@ export class IrrigationSettingsComponent implements OnInit {
 
   formatCurrentState(data: SettingsInfo) {
     const settingTitle = getSettingsOptionsTitle(data.settingId);
-    const valueText = getSettingsValueText(data.settingValue);
+    const valueText = getSettingsValueText(data.value);
     return `${settingTitle} (${valueText})`;
   }
 
@@ -120,7 +120,7 @@ export class IrrigationSettingsComponent implements OnInit {
     const currentSettingValue = this.formatResultChoice(dataCheckbox);
     const bodyParams = {
       settingId: this.optionSelected,
-      settingValue: currentSettingValue
+      value: currentSettingValue
     };
 
     this.settingsApi.setCurrentSettingsInfo(bodyParams).subscribe(

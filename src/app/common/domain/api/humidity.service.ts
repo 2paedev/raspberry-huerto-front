@@ -1,39 +1,34 @@
-import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { tap, finalize } from "rxjs/operators";
 
 import { URLS_API } from "./api";
-import { BasePost } from "../../models/base-post";
-
 @Injectable()
-export class SettingsService {
-  protected readonly currentSettingsURL = URLS_API.SETTINGS.CURRENT;
+export class HumidityService {
+  protected readonly humidityAirURL = URLS_API.HUMIDITY.AIR;
+  protected readonly humidityGroundURL = URLS_API.HUMIDITY.GROUND;
 
-  constructor(private clientHttp: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  public getCurrentSettingsInfo(params: any): Observable<any> {
+  // TODO: quitar any
+  public historicHumidityAir(): Observable<any> {
     const queryParams = new HttpParams();
 
-    return this.clientHttp
-      .get<any>(this.currentSettingsURL, { params: queryParams })
+    return this.http
+      .get<any>(this.humidityAirURL, { params: queryParams })
       .pipe(
         tap(() => {}, () => {}),
         finalize(() => {})
       );
   }
 
-  public setCurrentSettingsInfo(params: any): Observable<BasePost> {
+  // TODO: quitar any
+  public historicHumidityGround(): Observable<any> {
     const queryParams = new HttpParams();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      }),
-      params: queryParams
-    };
-    const bodyParams = params;
-    return this.clientHttp
-      .post<BasePost>(this.currentSettingsURL, bodyParams, httpOptions)
+
+    return this.http
+      .get<any>(this.humidityGroundURL, { params: queryParams })
       .pipe(
         tap(() => {}, () => {}),
         finalize(() => {})
