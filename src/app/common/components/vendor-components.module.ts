@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { NgxSpinnerModule } from "ngx-spinner";
+import { LineChartModule, BarChartModule } from "@swimlane/ngx-charts";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   NgbAlertModule,
   NgbModalModule,
@@ -10,10 +12,13 @@ import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     NgbTabsetModule,
     NgbAlertModule,
     NgbModalModule,
     NgxSpinnerModule,
+    LineChartModule,
+    BarChartModule,
     HttpClientModule,
     FormsModule
   ],
@@ -22,6 +27,8 @@ import { FormsModule } from "@angular/forms";
     NgbAlertModule,
     NgbModalModule,
     NgxSpinnerModule,
+    LineChartModule,
+    BarChartModule,
     FormsModule
   ]
 })

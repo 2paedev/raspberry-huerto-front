@@ -1,5 +1,14 @@
 <section class="container">
   <div class="row">
-    <div class="col"><app-stats-tabs></app-stats-tabs></div>
+    <div class="col header-block">
+      <button class="button-link" (click)="goHome()">
+        <i class="icon-home"></i> {{ BACK_BUTTON_TEXT }}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-stats-tabs [data]="data" [tabSelected]="initialTab"></app-stats-tabs>
+    </div>
   </div>
 </section>

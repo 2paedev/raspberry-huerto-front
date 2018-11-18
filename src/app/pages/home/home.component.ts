@@ -8,7 +8,7 @@ import { APP_ROUTES } from "src/app/common/domain/routes";
 import { AemetMasterService } from "src/app/common/domain/api/aemet/aemet-master.service";
 import { City } from "src/app/common/models/city";
 // tslint:disable-next-line:max-line-length
-import { WeatherForecastFormatter } from "src/app/common/formatters/weather-forecast-formatter.components";
+import { WeatherForecastFormatter } from "src/app/common/formatters/weather-forecast-formatter.service";
 import { formatMessageError } from "src/app/common/helpers/errors";
 import { AemetPredictionService } from "src/app/common/domain/api/aemet/aemet-prediction.service";
 import { HttpClient } from "@angular/common/http";

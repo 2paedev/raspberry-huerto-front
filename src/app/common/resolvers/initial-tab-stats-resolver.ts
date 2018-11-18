@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { StatsTabs } from "../services/stats-tabs.service";
 
 @Injectable()
-export class StatsResolver implements Resolve<Observable<string>> {
+export class InitialTabStatsResolver implements Resolve<Observable<string>> {
   constructor(private statsTabs: StatsTabs) {}
 
   resolve() {

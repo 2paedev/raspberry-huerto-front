@@ -1,13 +1,14 @@
 export const SYMBOLS = {
-  TEMPERATURE: 'ºC',
-  HUMIDITY: '%',
-  METER: 'm',
+  TEMPERATURE: "ºC",
+  HUMIDITY: "%",
+  METER: "m"
 };
 
 export const CARD_INFO = {
+  ALL: 0,
   HUMIDITY_GROUND: 1,
   TEMPERATURE_AIR: 2,
-  HUMIDITY_AIR: 3,
+  HUMIDITY_AIR: 3
 };
 
 export const SETTINGS_OPTIONS = {
@@ -15,40 +16,40 @@ export const SETTINGS_OPTIONS = {
     ID: 0,
     VALUES: {
       OFF: 0,
-      ON: 1,
-    },
+      ON: 1
+    }
   },
   AUTO_HOURS: {
-    ID: 1,
+    ID: 1
   },
   AUTO_HUMIDITY: {
-    ID: 2,
-  },
+    ID: 2
+  }
 };
 
 export const SKY_WEATHER = {
   CLOUDY: {
-    DESCRIPTION: 'Nuboso',
-    ICON: 'assets/icons/nature-icons/cloud.svg',
+    DESCRIPTION: "Nuboso",
+    ICON: "assets/icons/nature-icons/cloud.svg"
   },
   CLOUDY_LIGHT_RAIN: {
-    DESCRIPTION: 'Nuboso con lluvia escasa',
-    ICON: 'assets/icons/nature-icons/rain.svg',
+    DESCRIPTION: "Nuboso con lluvia escasa",
+    ICON: "assets/icons/nature-icons/rain.svg"
   },
   CLOUDY_INTERVALS: {
-    DESCRIPTION: 'Intervalos nubosos',
-    ICON: 'assets/icons/nature-icons/cloudy.svg',
+    DESCRIPTION: "Intervalos nubosos",
+    ICON: "assets/icons/nature-icons/cloudy.svg"
   },
   CLOUDY_INTERVALS_RAIN: {
-    DESCRIPTION: 'Intervalos nubosos con lluvia',
-    ICON: 'assets/icons/nature-icons/rain-1.svg',
+    DESCRIPTION: "Intervalos nubosos con lluvia",
+    ICON: "assets/icons/nature-icons/rain-1.svg"
   },
   CLOUDY_INTERVALS_LIGHT_RAIN: {
-    DESCRIPTION: 'Intervalos nubosos con lluvia escasa',
-    ICON: 'assets/icons/nature-icons/rain-1.svg',
+    DESCRIPTION: "Intervalos nubosos con lluvia escasa",
+    ICON: "assets/icons/nature-icons/rain-1.svg"
   },
   CLEAR: {
-    DESCRIPTION: 'Despejado',
-    ICON: 'assets/icons/nature-icons/sun.svg',
-  },
+    DESCRIPTION: "Despejado",
+    ICON: "assets/icons/nature-icons/sun.svg"
+  }
 };

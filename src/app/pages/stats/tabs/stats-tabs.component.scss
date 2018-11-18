@@ -1,0 +1,26 @@
+@import '~src/assets/sass/main';
+
+:host ::ng-deep {
+  .nav {
+    border-bottom: 1px solid $color-blue-default;
+  }
+
+  .nav-link {
+    border: none;
+    color: $color-blue-default;
+
+    &.active,
+    &:hover {
+      background: transparent;
+      color: $color-blue-secondary;
+    }
+  }
+
+  .tab-content {
+    height: 100%;
+
+    & > .active {
+      height: 100%;
+    }
+  }
+}

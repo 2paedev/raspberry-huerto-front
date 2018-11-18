@@ -3,18 +3,26 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { APP_ROUTES } from "../../common/domain/routes";
 import { StatsComponent } from "./stats.component";
-import { StatsResolver } from "src/app/common/resolvers/stats-resolver";
+import { InitialTabStatsResolver } from "src/app/common/resolvers/initial-tab-stats-resolver";
+import { DataStatsResolver } from "src/app/common/resolvers/data-stats-resolver";
+import { HumidityService } from "src/app/common/domain/api/humidity.service";
+import { TemperatureService } from "src/app/common/domain/api/temperature.service";
 
 export const routesStatsModule: Routes = [
   {
     path: APP_ROUTES.STATS,
     component: StatsComponent,
-    resolve: { currentTab: StatsResolver }
+    resolve: { currentTab: InitialTabStatsResolver, http: DataStatsResolver }
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routesStatsModule)],
-  providers: [StatsResolver]
+  providers: [
+    InitialTabStatsResolver,
+    DataStatsResolver,
+    HumidityService,
+    TemperatureService
+  ]
 })
 export class StatsRouterModule {}

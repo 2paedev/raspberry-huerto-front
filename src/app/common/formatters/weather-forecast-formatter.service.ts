@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
-import { City } from '../models/city';
+import { Injectable } from "@angular/core";
+import { City } from "../models/city";
 import {
   DailyWeather,
   Prediction,
   MaxMin,
   PeriodValues,
-  WindValues,
-} from '../models/daily-weather';
-import { ValueTransformer } from '@angular/compiler/src/util';
-import { isUndefinedOrNullOrEmpty } from '../helpers/common';
+  WindValues
+} from "../models/daily-weather";
+import { isUndefinedOrNullOrEmpty } from "../helpers/common";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class WeatherForecastFormatter {
   formatMunicipioInfo(data: any) {
@@ -23,7 +22,7 @@ export class WeatherForecastFormatter {
       longitude: data.longitud,
       longitudeDec: data.longitud_dec,
       altitude: data.altitud,
-      residentsNumber: data.num_hab,
+      residentsNumber: data.num_hab
     };
     return dataFormatted;
   }
@@ -34,7 +33,7 @@ export class WeatherForecastFormatter {
       municipioName: data.nombre,
       provinciaName: data.provincia,
       reportDate: data.elaborado,
-      prediction: this.formatPredictionValues(data.prediccion),
+      prediction: this.formatPredictionValues(data.prediccion)
     };
     return dataFormatted;
   }
@@ -42,16 +41,18 @@ export class WeatherForecastFormatter {
   formatPredictionValues(predictionData: any) {
     const days = predictionData.dia;
     const predictionDays = [];
-    days.forEach((day) => {
+    days.forEach(day => {
       const dayData: Prediction = {
         date: day.fecha,
         uvMax: day.uvMax,
         relativeHumidity: this.formatMaxMin(day.humedadRelativa),
         thermalSensation: this.formatMaxMin(day.sensTermica),
         temperature: this.formatMaxMin(day.temperatura),
-        precipitationProbability: this.formatPeriodValues(day.probPrecipitacion),
+        precipitationProbability: this.formatPeriodValues(
+          day.probPrecipitacion
+        ),
         sky: this.formatPeriodValues(day.estadoCielo),
-        wind: this.formatWindValues(day.viento),
+        wind: this.formatWindValues(day.viento)
       };
       predictionDays.push(dayData);
     });
@@ -61,20 +62,20 @@ export class WeatherForecastFormatter {
   formatMaxMin(value: any) {
     const dataFormatted: MaxMin = {
       max: value.maxima,
-      min: value.minima,
+      min: value.minima
     };
     return dataFormatted;
   }
 
   formatPeriodValues(periods: any[]) {
     const dataFormatted: PeriodValues[] = [];
-    periods.forEach((period) => {
+    periods.forEach(period => {
       const periodValue: PeriodValues = {
         value: period.value,
-        hoursDayPeriod: period.periodo,
+        hoursDayPeriod: period.periodo
       };
       if (!isUndefinedOrNullOrEmpty(period.descripcion)) {
-        periodValue['description'] = period.descripcion;
+        periodValue["description"] = period.descripcion;
       }
       dataFormatted.push(periodValue);
     });
@@ -83,11 +84,11 @@ export class WeatherForecastFormatter {
 
   formatWindValues(windPeriods: any[]) {
     const dataFormatted: WindValues[] = [];
-    windPeriods.forEach((period) => {
+    windPeriods.forEach(period => {
       const periodValue: WindValues = {
         direction: period.direccion,
         speed: period.velocidad,
-        period: period.periodo,
+        period: period.periodo
       };
       dataFormatted.push(periodValue);
     });

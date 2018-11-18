@@ -10,6 +10,7 @@ import {
   getSettingsOptionsTitle,
   getSettingsValueText
 } from "../../helpers/common";
+import { SpinnerService } from "../../services/spinner.service";
 
 const OPTIONS_PANEL_INFO_MODAL = {
   windowClass: "irrigation-panel-info-modal",
@@ -27,9 +28,6 @@ export class IrrigationSettingsComponent implements OnInit {
   @Input()
   title: string;
 
-  @Output()
-  showLoading = new EventEmitter();
-
   optionSelected: any;
   settingsOptions: any;
   texts: any;
@@ -42,7 +40,8 @@ export class IrrigationSettingsComponent implements OnInit {
 
   constructor(
     private serviceModal: NgbModal,
-    private settingsApi: SettingsService
+    private settingsApi: SettingsService,
+    private spinner: SpinnerService
   ) {}
 
   ngOnInit() {
@@ -115,7 +114,7 @@ export class IrrigationSettingsComponent implements OnInit {
   }
 
   setNewConfiguration(dataCheckbox: boolean) {
-    this.showLoading.emit(true);
+    this.spinner.activate();
     this.errorInManual = false;
     const currentSettingValue = this.formatResultChoice(dataCheckbox);
     const bodyParams = {
@@ -125,12 +124,12 @@ export class IrrigationSettingsComponent implements OnInit {
 
     this.settingsApi.setCurrentSettingsInfo(bodyParams).subscribe(
       response => {
-        this.showLoading.emit(false);
+        this.spinner.deactivate();
         this.errorInManual = false;
         this.setCurrentSettingAndState(bodyParams);
       },
       error => {
-        this.showLoading.emit(false);
+        this.spinner.deactivate();
         this.errorInManual = true;
         this.messageError = formatMessageError(
           error,

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { tap, finalize } from "rxjs/operators";
 
 import { URLS_API } from "./api";
+import { StatsDataModel } from "../../models/stats-data-model";
 @Injectable()
 export class HumidityService {
   protected readonly humidityAirURL = URLS_API.HUMIDITY.AIR;
@@ -11,8 +12,7 @@ export class HumidityService {
 
   constructor(private http: HttpClient) {}
 
-  // TODO: quitar any
-  public historicHumidityAir(): Observable<any> {
+  public historicHumidityAir(): Observable<StatsDataModel[]> {
     const queryParams = new HttpParams();
 
     return this.http
@@ -23,8 +23,7 @@ export class HumidityService {
       );
   }
 
-  // TODO: quitar any
-  public historicHumidityGround(): Observable<any> {
+  public historicHumidityGround(): Observable<StatsDataModel[]> {
     const queryParams = new HttpParams();
 
     return this.http

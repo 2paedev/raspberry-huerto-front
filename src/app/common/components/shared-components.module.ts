@@ -15,7 +15,6 @@ import { PanelInfoModalComponent } from "./modals/panel-info-modal/panel-info-mo
 import { ModalHeaderComponent } from "./modals/modal-header/modal-header.component";
 import { ModalFooterComponent } from "./modals/modal-footer/modal-footer.component";
 import { ToggleButtonComponent } from "./toggle-button/toggle-button.component";
-import { StatsTabsComponent } from "./stats-tabs/stats-tabs.component";
 import { StatsAllComponent } from "./stats-all/stats-all.component";
 import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
 
@@ -35,7 +34,6 @@ import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
     ModalHeaderComponent,
     ModalFooterComponent,
     ToggleButtonComponent,
-    StatsTabsComponent,
     StatsAllComponent,
     StatsWeatherComponent
   ],
@@ -54,7 +52,6 @@ import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
     ModalHeaderComponent,
     ModalFooterComponent,
     ToggleButtonComponent,
-    StatsTabsComponent,
     StatsAllComponent,
     StatsWeatherComponent
   ],

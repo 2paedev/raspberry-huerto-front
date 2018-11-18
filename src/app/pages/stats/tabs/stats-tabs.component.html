@@ -1,0 +1,26 @@
+<ngb-tabset
+  [activeId]="tabSelected"
+  justify="center"
+  (tabChange)="tabChange($event)"
+>
+  <ngb-tab [id]="TAB_ID.ALL" title="All">
+    <ng-template ngbTabContent>
+      <app-stats-all [data]="data"></app-stats-all>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab [id]="TAB_ID.HUMIDITY_AIR" title="Humidity Air">
+    <ng-template ngbTabContent>
+      <app-stats-weather [data]="data"></app-stats-weather>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab [id]="TAB_ID.HUMIDITY_GROUND" title="Humidity Ground">
+    <ng-template ngbTabContent>
+      <app-stats-weather [data]="data"></app-stats-weather>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab [id]="TAB_ID.TEMPERATURE_AIR" title="Temperature Air">
+    <ng-template ngbTabContent>
+      <app-stats-weather [data]="data"></app-stats-weather>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
