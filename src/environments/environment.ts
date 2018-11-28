@@ -7,7 +7,7 @@ const URL_LOCAL_BACK = "http://localhost:8000/api";
 
 export const environment = {
   production: false,
-  baseURL: URL_LOCAL_MOCKS
+  baseURL: URL_LOCAL_BACK
 };
 
 /*

@@ -12,6 +12,10 @@ export const URLS_API = {
     GROUND: `${BASE_URL}/humidity/ground`
   },
   TEMPERATURE: {
-    AIR: `${BASE_URL}/temperature/air`,
+    AIR: `${BASE_URL}/temperature/air`
   },
+  AEMET: {
+    CITY_INFO: `${BASE_URL}/aemet/city-info`,
+    PREDICTION: `${BASE_URL}/aemet/prediction`
+  }
 };

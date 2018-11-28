@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { APP_ROUTES } from "src/app/common/domain/routes";
 import { TEXTS } from "src/app/common/domain/texts";
 import { StatsDataModel } from "src/app/common/models/stats-data-model";
+import { isUndefinedOrNullOrEmpty } from "src/app/common/helpers/common";
 
 @Component({
   selector: "app-stats",
@@ -24,8 +25,17 @@ export class StatsComponent implements OnInit {
 
   initVariables() {
     this.initialTab = this.activeRoute.snapshot.data.currentTab;
-    this.data = this.activeRoute.snapshot.data.http;
     this.BACK_BUTTON_TEXT = TEXTS.LABELS.GO_BACK;
+
+    this.setStatsData();
+  }
+
+  setStatsData() {
+    const snapshotData = this.activeRoute.snapshot.data;
+    if (!isUndefinedOrNullOrEmpty(snapshotData.http)) {
+      this.data = this.activeRoute.snapshot.data.http;
+      return;
+    }
   }
 
   goHome() {

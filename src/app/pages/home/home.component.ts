@@ -1,27 +1,24 @@
 import { Component, OnInit } from "@angular/core";
 import { SYMBOLS, CARD_INFO } from "src/app/common/domain/constants";
-import { interval } from "rxjs/internal/observable/interval";
-import { INTERVAL_TIME_REQUESTS } from "src/app/common/helpers/config-requests";
 import { CardInfoService } from "src/app/common/domain/api/card-info.service";
 import { Router } from "@angular/router";
 import { APP_ROUTES } from "src/app/common/domain/routes";
-import { AemetMasterService } from "src/app/common/domain/api/aemet/aemet-master.service";
 import { City } from "src/app/common/models/city";
 // tslint:disable-next-line:max-line-length
 import { WeatherForecastFormatter } from "src/app/common/formatters/weather-forecast-formatter.service";
 import { formatMessageError } from "src/app/common/helpers/errors";
-import { AemetPredictionService } from "src/app/common/domain/api/aemet/aemet-prediction.service";
 import { HttpClient } from "@angular/common/http";
 import { TEXTS } from "src/app/common/domain/texts";
 import { CardInfoValues } from "src/app/common/models/card-info-values";
 import { StatsTabs } from "src/app/common/services/stats-tabs.service";
 import { SpinnerService } from "src/app/common/services/spinner.service";
+import { AemetService } from "src/app/common/domain/api/aemet.service";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
-  providers: [CardInfoService, AemetMasterService, AemetPredictionService]
+  providers: [CardInfoService, AemetService]
 })
 export class HomeComponent implements OnInit {
   symbols = SYMBOLS;
@@ -38,8 +35,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private cardInfoApi: CardInfoService,
-    private aemetMasterApi: AemetMasterService,
-    private aemetPredictionApi: AemetPredictionService,
+    private aemetApi: AemetService,
     private weatherForecastFormatter: WeatherForecastFormatter,
     private statsTabs: StatsTabs,
     private spinner: SpinnerService,
@@ -107,8 +103,9 @@ export class HomeComponent implements OnInit {
 
   getMunicipioData() {
     this.dataWeatherForecastLoaded = false;
-    this.aemetMasterApi.getMunicipio({}).subscribe(
+    this.aemetApi.getCityInfo().subscribe(
       response => {
+        debugger;
         this.error.inWeatherForecast = false;
         this.dataWeatherForecastLoaded = true;
         this.municipioData = this.weatherForecastFormatter.formatMunicipioInfo(
@@ -128,17 +125,14 @@ export class HomeComponent implements OnInit {
 
   getDailyPredictionWeather() {
     this.dataWeatherForecastLoaded = false;
-    this.aemetPredictionApi.getDailyPrediction({}).subscribe(
+    this.aemetApi.getPredictionInfo().subscribe(
       response => {
+        debugger;
         this.error.inWeatherForecast = false;
         this.dataWeatherForecastLoaded = true;
-        this.httpClient
-          .get<any>(response.datos, {})
-          .subscribe(predictionData => {
-            this.weatherDailyPredictionData = this.weatherForecastFormatter.formatPredictionDailyData(
-              predictionData[0]
-            );
-          });
+        this.weatherDailyPredictionData = this.weatherForecastFormatter.formatPredictionDailyData(
+          response[0]
+        );
       },
       error => {
         this.error.inWeatherForecast = true;

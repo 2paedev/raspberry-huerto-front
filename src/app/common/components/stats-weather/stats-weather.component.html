@@ -1,37 +1,4 @@
 <section class="charts-wrapper dark">
-  <div class="line-chart">
-    <ngx-charts-line-chart
-      [results]="dataLineChart"
-      [scheme]="configs.lineChart.colorScheme"
-      [view]="configs.lineChart.view"
-      [xAxis]="configs.lineChart.showXAxis"
-      [yAxis]="configs.lineChart.showYAxis"
-      [legend]="configs.lineChart.showLegend"
-      [autoScale]="configs.lineChart.autoScale"
-      [showXAxisLabel]="configs.lineChart.showXAxisLabel"
-      [showYAxisLabel]="configs.lineChart.showYAxisLabel"
-      [xAxisLabel]="configs.lineChart.xAxisLabel"
-      [yAxisLabel]="configs.lineChart.yAxisLabel"
-      (select)="onSelect($event)"
-    >
-    </ngx-charts-line-chart>
-  </div>
-  <hr />
-  <div class="line-chart">
-    <ngx-charts-line-chart
-      [results]="dataLineChart"
-      [scheme]="configs.lineChart.colorScheme"
-      [view]="configs.lineChart.view"
-      [xAxis]="configs.lineChart.showXAxis"
-      [yAxis]="configs.lineChart.showYAxis"
-      [legend]="configs.lineChart.showLegend"
-      [autoScale]="configs.lineChart.autoScale"
-      [showXAxisLabel]="configs.lineChart.showXAxisLabel"
-      [showYAxisLabel]="configs.lineChart.showYAxisLabel"
-      [xAxisLabel]="configs.lineChart.xAxisLabel"
-      [yAxisLabel]="configs.lineChart.yAxisLabel"
-      (select)="onSelect($event)"
-    >
-    </ngx-charts-line-chart>
-  </div>
+  <div class="filter">Filter</div>
+  <div class="line-chart"><app-line-chart [data]="data"></app-line-chart></div>
 </section>

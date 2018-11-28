@@ -1,0 +1,17 @@
+<div class="line-chart-container dark">
+  <ngx-charts-line-chart
+    [results]="dataFormatted"
+    [scheme]="configs.lineChart.colorScheme"
+    [view]="configs.lineChart.view"
+    [xAxis]="configs.lineChart.showXAxis"
+    [yAxis]="configs.lineChart.showYAxis"
+    [legend]="configs.lineChart.showLegend"
+    [autoScale]="configs.lineChart.autoScale"
+    [showXAxisLabel]="configs.lineChart.showXAxisLabel"
+    [showYAxisLabel]="configs.lineChart.showYAxisLabel"
+    [xAxisLabel]="configs.lineChart.xAxisLabel"
+    [yAxisLabel]="configs.lineChart.yAxisLabel"
+    (select)="onSelect($event)"
+  >
+  </ngx-charts-line-chart>
+</div>

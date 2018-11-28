@@ -17,6 +17,7 @@ import { ModalFooterComponent } from "./modals/modal-footer/modal-footer.compone
 import { ToggleButtonComponent } from "./toggle-button/toggle-button.component";
 import { StatsAllComponent } from "./stats-all/stats-all.component";
 import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   imports: [CommonModule, VendorComponentsModule],
@@ -35,7 +36,8 @@ import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
     ModalFooterComponent,
     ToggleButtonComponent,
     StatsAllComponent,
-    StatsWeatherComponent
+    StatsWeatherComponent,
+    LineChartComponent
   ],
   exports: [
     CommonModule,
@@ -53,7 +55,8 @@ import { StatsWeatherComponent } from "./stats-weather/stats-weather.component";
     ModalFooterComponent,
     ToggleButtonComponent,
     StatsAllComponent,
-    StatsWeatherComponent
+    StatsWeatherComponent,
+    LineChartComponent
   ],
   entryComponents: [DetailInfoModalComponent, PanelInfoModalComponent]
 })
